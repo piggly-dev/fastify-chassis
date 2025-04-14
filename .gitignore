@@ -244,4 +244,5 @@ dist
 .svelte-kit
 
 *.code-workspace
+.old
 # End of https://www.toptal.com/developers/gitignore/api/dotenv,windows,linux,macos,visualstudiocode,node

@@ -33,7 +33,6 @@ export {
 
 export {
 	CookieBuilderService,
-	NonceBuilderService,
 	HealthCheckService,
 	EnvironmentService,
 	CleanUpService,
