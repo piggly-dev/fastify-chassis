@@ -10,6 +10,7 @@ import { crc32 } from 'crc';
 export class InvalidRequestBodyError extends ApplicationError {
 	/**
 	 * Create a new error.
+	 * Code: 1394446271
 	 *
 	 * @param {(object|string[])} details The error details.
 	 * @param {string} [message] The error message.

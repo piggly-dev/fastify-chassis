@@ -10,6 +10,7 @@ import { crc32 } from 'crc';
 export class RequestApiNotFoundError extends ApplicationError {
 	/**
 	 * Create a new instance of the error.
+	 * Code: 2975256894
 	 *
 	 * @param {string} [message] The error message.
 	 * @param {string} [hint] The error hint.

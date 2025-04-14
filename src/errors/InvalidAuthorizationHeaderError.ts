@@ -10,6 +10,7 @@ import { crc32 } from 'crc';
 export class InvalidAuthorizationHeaderError extends ApplicationError {
 	/**
 	 * Create a new error.
+	 * Code: 2210884079
 	 *
 	 * @param {string} [message] The error message.
 	 * @param {string} [hint] The error hint.

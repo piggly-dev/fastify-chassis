@@ -10,6 +10,7 @@ import { crc32 } from 'crc';
 export class ForbiddenError extends ApplicationError {
 	/**
 	 * Create a new error.
+	 * Code: 1209582122
 	 *
 	 * @param {string} [message] The error message.
 	 * @param {string} [hint] The error hint.

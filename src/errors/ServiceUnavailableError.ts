@@ -10,6 +10,7 @@ import { crc32 } from 'crc';
 export class ServiceUnavailableError extends ApplicationError {
 	/**
 	 * Create a new instance of the error.
+	 * Code: 1668863794
 	 *
 	 * @param {string} message The error message.
 	 * @param {string} hint The error hint.

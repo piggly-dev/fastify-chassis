@@ -10,6 +10,7 @@ import { crc32 } from 'crc';
 export class InvalidRequestQueryError extends ApplicationError {
 	/**
 	 * Create a new error.
+	 * Code: 2272597264
 	 *
 	 * @param {string} [message] The error message.
 	 * @param {string} [hint] The error hint.

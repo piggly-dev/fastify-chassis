@@ -14,6 +14,7 @@ import { ApplicationErrorEvent } from '@/events';
 export class RequestApiServerError extends ApplicationError {
 	/**
 	 * Create a new instance of the error.
+	 * Code: 355204257
 	 *
 	 * @param {any} error The error.
 	 * @memberof RequestApiServerError

@@ -10,6 +10,7 @@ import { crc32 } from 'crc';
 export class CORSNotAllowedError extends ApplicationError {
 	/**
 	 * Create a new error.
+	 * Code: 2413539071
 	 *
 	 * @memberof CORSNotAllowedError
 	 * @since 1.0.0

@@ -10,6 +10,7 @@ import { crc32 } from 'crc';
 export class RequestServerError extends ApplicationError {
 	/**
 	 * Create a new error.
+	 * Code: 3134296747
 	 *
 	 * @param {string} [message] The error message.
 	 * @param {string} [hint] The error hint.

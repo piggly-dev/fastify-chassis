@@ -10,6 +10,7 @@ import { crc32 } from 'crc';
 export class TooManyRequestsError extends ApplicationError {
 	/**
 	 * Create a new error.
+	 * Code: 2473277220
 	 *
 	 * @param {string} after The time to retry.
 	 * @memberof TooManyRequestsError

@@ -10,6 +10,7 @@ import { crc32 } from 'crc';
 export class ResourceForbiddenError extends ApplicationError {
 	/**
 	 * Create a new instance of the error.
+	 * Code: 641414657
 	 *
 	 * @param {string} hint The error hint.
 	 * @param {string} message The error message.

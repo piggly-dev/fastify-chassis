@@ -90,3 +90,10 @@
   * `loadYaml` function;
   * `EnvironmentType` type;
   * `InvalidPayloadSchemaError` error.
+
+### 7.0.0 at (`2025-04-14`)
+
+* Update all dependencies to the latest version;
+* Add `MissingHeaderError` error;
+* Add `InvalidNonceTokenError` error;
+* Add `InvalidCSRFTokenError` error;
