@@ -9,7 +9,7 @@
 		"build": "npm run clean && npm run build:types && npm run build:esm && npm run build:cjs",
 		"build:esm": "tsc -p tsconfig.esm.json && tsc-alias -p tsconfig.esm.json && node ./fixESM.cjs",
 		"build:cjs": "tsc -p tsconfig.cjs.json && tsc-alias -p tsconfig.cjs.json",
-		"build:types": "tsc -p tsconfig.types.json && tsc-alias -p tsconfig.types.json",
+		"build:types": "tsc -p tsconfig.types.json && tsc-alias -p tsconfig.types.json --outDir dist/types",
 		"check": "tsc --noEmit -p tsconfig.json",
 		"format": "prettier --write \"./src/**/*.ts\"",
 		"lint": "eslint --fix ./src/**",
