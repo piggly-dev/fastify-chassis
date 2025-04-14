@@ -9,7 +9,7 @@ import { Server } from 'http';
 import path from 'path';
 import fs from 'fs';
 
-import { LoggerService, ServiceProvider } from '@piggly/ddd-toolkit';
+import { ServiceProvider, LoggerService } from '@piggly/ddd-toolkit';
 import fastifyRateLimit from '@fastify/rate-limit';
 import moment from 'moment-timezone';
 
@@ -20,34 +20,33 @@ import {
 } from '@/types';
 import { RequestNotFoundError, RequestServerError } from '@/errors';
 import { HttpInsecureServer, FastifyModifiers } from '@/www';
-import { SyncErrorOnDiskHandler } from '@/handlers';
-
-type ApiServer = Server;
 
 type ApiEnvironment = {
 	api: { rate: { requests: number } };
 } & DefaultEnvironment;
 
-type ApiRequest = FastifyRequest<RouteGenericInterface, ApiServer>;
 type ApiReply = FastifyReply<RouteGenericInterface, ApiServer>;
+
+type ApiRequest = FastifyRequest<RouteGenericInterface, ApiServer>;
+type ApiServer = Server;
 
 const env: ApiEnvironment = {
 	api: {
-		rest: {
-			name: 'http-insecure',
-			host: '0.0.0.0',
-			port: 3005,
-		},
 		rate: {
 			requests: 30,
+		},
+		rest: {
+			host: '0.0.0.0',
+			name: 'http-insecure',
+			port: 3005,
 		},
 	},
 	app: {
 		root_path: path.resolve(__dirname), // The root path of the application.
 		timezone: 'UTC',
 	},
-	environment: 'development',
 	debug: true,
+	environment: 'development',
 };
 
 const HelloWorldRoute =
@@ -109,6 +108,7 @@ const afterInit: FastifyModifierCallable<
 };
 
 const ApiLogger = new LoggerService({
+	alwaysOnConsole: false,
 	callbacks: {
 		onDebug: async (message, ...args) => console.debug(message, ...args),
 		onError: async (message, ...args) => console.error(message, ...args),
@@ -116,23 +116,21 @@ const ApiLogger = new LoggerService({
 		onInfo: async (message, ...args) => console.info(message, ...args),
 		onWarn: async (message, ...args) => console.warn(message, ...args),
 	},
-	alwaysOnConsole: false,
 	ignoreUnset: false,
 });
 
 const options: ApiServerOptions<ApiServer, ApiEnvironment> = {
+	env,
 	errors: {
 		// run to all unchaught errors
-		handler: SyncErrorOnDiskHandler(env.app.root_path),
 		notFound: new RequestNotFoundError(),
 		unknown: new RequestServerError(),
 	},
-	routes: new FastifyModifiers<ApiServer, ApiEnvironment>(PublicApiRoutes),
-	hooks: { beforeInit, afterInit },
 	fastify: { logger: false },
+	hooks: { afterInit, beforeInit },
 	logger: ApiLogger,
 	plugins,
-	env,
+	routes: new FastifyModifiers<ApiServer, ApiEnvironment>(PublicApiRoutes),
 };
 
 const serverUncaught = (reason: any, origin: any) => {

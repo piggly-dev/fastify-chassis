@@ -2,6 +2,7 @@
 import type { FastifyInstance, RawServerBase, FastifyError } from 'fastify';
 
 import { LoggerService, RuntimeError, DomainError } from '@piggly/ddd-toolkit';
+import debug from 'debug';
 
 import {
 	HttpServerInterface,
@@ -127,19 +128,23 @@ export abstract class AbstractServer<
 	 */
 	protected async init(): Promise<void> {
 		if (this._options.logger) {
-			// if logger is already registered, it will be ignored
+			debug('http:server')('Registering logger');
 			LoggerService.register(this._options.logger);
 		}
 
+		debug('http:server')('Registering environment service');
 		EnvironmentService.register(new EnvironmentService(this._options.env));
 
 		// Plugins
+		debug('http:server')('Applying plugins');
 		await this._options.plugins.apply(this._app, this._options.env);
 
 		// Routes
+		debug('http:server')('Applying routes');
 		await this._options.routes.apply(this._app, this._options.env);
 
 		// Not found routes
+		debug('http:server')('Setting not found handler');
 		this._app.setNotFoundHandler((request, reply) => {
 			reply
 				.status(404)
@@ -147,8 +152,10 @@ export abstract class AbstractServer<
 		});
 
 		// Any error
+		debug('http:server')('Setting error handler');
 		this._app.setErrorHandler<FastifyError | DomainError | Error>(
 			(error, request, reply) => {
+				debug('http:server')('Handling error', error);
 				this._app.log.error(error);
 
 				if (this._options.errors.handler) {

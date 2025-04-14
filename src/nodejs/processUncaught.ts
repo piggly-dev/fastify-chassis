@@ -1,17 +1,22 @@
 /* eslint-disable no-console */
 import { LoggerService } from '@piggly/ddd-toolkit';
+import EventBus from '@piggly/event-bus';
 
 import type { DefaultEnvironment } from '@/types';
-
-import { logErrorOnFile } from './logErrorOnFile';
 
 /**
  * Process uncaught error.
  *
+ * It will wait for:
+ * - EventBus cleanup;
+ * - LoggerService flush and cleanup.
+ *
+ * You may not need to cleanup classes above when using this.
+ *
  * @param {Environment} env
  * @param {() => Promise<number>} beforeExit
  * @param {number} exitCode Used when beforeExit is not provided. Default is 0.
- * @returns {void}
+ * @returns The callback function.
  * @since 5.1.0
  * @author Caique Araujo <caique@piggly.com.br>
  */
@@ -22,16 +27,14 @@ export const processUncaught =
 		exitCode: number = 0,
 	) =>
 	async (reason: any, origin: any) => {
-		const err = logErrorOnFile(env, reason, origin);
+		console.error(reason, origin);
+		await EventBus.instance.cleanup();
 
 		const logger = LoggerService.softResolve();
 
-		logger.error('UNCAUGHT_EXCEPTION_ERROR', err);
+		logger.error('UNCAUGHT_EXCEPTION_ERROR', reason, origin);
 		logger.flush();
-
-		if (env.debug === true) {
-			console.error(err);
-		}
+		await logger.cleanup();
 
 		if (beforeExit) {
 			process.exit(await beforeExit());

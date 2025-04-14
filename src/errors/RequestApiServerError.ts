@@ -14,6 +14,12 @@ import { ApplicationErrorEvent } from '@/events';
 export class RequestApiServerError extends ApplicationError {
 	/**
 	 * Create a new instance of the error.
+	 * Useful for: Request API server error and auto publish ApplicationErrorEvent when error is set.
+	 * Code: 355204257
+	 *
+	 * It will produce a APPLICATION_ERROR_EVENT if there is an error,
+	 * when a new object is created. You may listen to it
+	 * to setup notifications or actions.
 	 *
 	 * @param {any} error The error.
 	 * @memberof RequestApiServerError

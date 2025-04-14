@@ -9,6 +9,22 @@ import { ZodSchema } from 'zod';
 
 import { replyError, getBody } from '@/utils';
 
+/**
+ * SchemaValidationMiddleware is a middleware that validates the request
+ * body, headers, params and querystring against the provided Zod schemas.
+ *
+ * It will replace the request body, headers, params and querystring with
+ * the validated data.
+ *
+ * @param {Object} schemas - The schemas to validate the request against.
+ * @param {ZodSchema} schemas.body - The schema to validate the request body against.
+ * @param {ZodSchema} schemas.headers - The schema to validate the request headers against.
+ * @param {ZodSchema} schemas.params - The schema to validate the request params against.
+ * @param {ZodSchema} schemas.querystring - The schema to validate the request querystring against.
+ * @returns The middleware function.
+ * @since 1.0.0
+ * @author Caique Araujo <caique@piggly.com.br>
+ */
 export const SchemaValidationMiddleware =
 	(schemas: {
 		body?: ZodSchema<any>;

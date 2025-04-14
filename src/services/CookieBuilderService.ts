@@ -7,12 +7,37 @@ import {
 	TOrUndefined,
 } from '@piggly/ddd-toolkit';
 
-type CookieBuilderServiceSettings = {
+/**
+ * Cookie builder service settings.
+ *
+ * @property {string} domain The domain of the cookie.
+ * @property {EnvironmentType} environment The environment of the cookie.
+ * @since 7.0.0
+ * @author Caique Araujo <caique@piggly.com.br>
+ */
+export type CookieBuilderServiceSettings = {
 	domain: string;
 	environment: EnvironmentType;
 };
 
-type CookieOptions = {
+/**
+ * Cookie options.
+ *
+ * @property {string} [domain] The domain of the cookie.
+ * @property {function(string): string} [encode] The function to encode the cookie value.
+ * @property {Date} [expires] The expiration date of the cookie.
+ * @property {boolean} [httpOnly] Whether the cookie is http only.
+ * @property {number} [maxAge] The max age of the cookie.
+ * @property {boolean} [partitioned] Whether the cookie is partitioned.
+ * @property {string} [path] The path of the cookie.
+ * @property {string} [priority] The priority of the cookie.
+ * @property {string} [sameSite] The same site of the cookie.
+ * @property {boolean} [secure] Whether the cookie is secure.
+ * @property {boolean} [signed] Whether the cookie is signed.
+ * @since 7.0.0
+ * @author Caique Araujo <caique@piggly.com.br>
+ */
+export type CookieOptions = {
 	domain?: string;
 	encode?(val: string): string;
 	expires?: Date;

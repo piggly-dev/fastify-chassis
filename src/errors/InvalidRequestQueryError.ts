@@ -10,6 +10,12 @@ import { crc32 } from 'crc';
 export class InvalidRequestQueryError extends ApplicationError {
 	/**
 	 * Create a new error.
+	 * Useful for: Invalid request query.
+	 * Code: 2272597264
+	 *
+	 * It is not an default Error class, it is a domain error.
+	 * Should be not thrown, but used as a domain error.
+	 * You may use it to return in a Result object from @piggly/ddd-toolkit.
 	 *
 	 * @param {string} [message] The error message.
 	 * @param {string} [hint] The error hint.
