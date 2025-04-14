@@ -100,4 +100,6 @@
 * Add more contextual data to errors at comments;
 * `ApplicationErrorEvent`, `DependencyErrorEvent` and `UnauthorizedAccessEvent` will use LoggerService to auto log them;
 * Remove `SyncErrorOnDiskHandler`. It is recommended to enable `FileLogStreamService` on LoggerService to logging errors to files;
-* Remove `AuditRequestLogger` hook. It is recommended to use `LogResponseHook` instead.
+* Remove `AuditRequestLogger` hook. It is recommended to use `LogResponseHook` instead;
+* Remove `logErrorOnFile` function. It is recommended to enable `FileLogStreamService` on LoggerService to logging errors to files;
+* Change `cleanupDependencies`, `processUncaught` and `processStop` functions to wait for EventBus cleanup and LoggerService flush and cleanup;

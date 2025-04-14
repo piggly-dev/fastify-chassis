@@ -8,6 +8,21 @@ import { UnauthorizedAccessEvent } from '@/events';
 import { UnauthorizedError } from '@/errors';
 import { getBasicToken } from '@/utils';
 
+/**
+ * BasicAuthMiddleware is a middleware that checks if the request
+ * is authenticated using Basic Authentication.
+ *
+ * If request is not authenticated, it will:
+ * - Publish UnauthorizedAccessEvent.
+ * - Return UnauthorizedError.
+ *
+ * @param {Object} expected - The expected username and password.
+ * @param {string} expected.username - The expected username.
+ * @param {string} expected.password - The expected password.
+ * @returns The middleware function.
+ * @since 1.0.0
+ * @author Caique Araujo <caique@piggly.com.br>
+ */
 export const BasicAuthMiddleware =
 	(expected: { password: string; username: string }) =>
 	(
@@ -15,7 +30,7 @@ export const BasicAuthMiddleware =
 		reply: FastifyReply,
 		done: HookHandlerDoneFunction,
 	) => {
-		const auth = getBasicToken(request.headers as any);
+		const auth = getBasicToken(request.headers);
 
 		if (auth === undefined) {
 			UnauthorizedAccessEvent.publish(request);

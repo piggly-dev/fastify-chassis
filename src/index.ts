@@ -74,11 +74,6 @@ export {
 
 export { SchemaValidationMiddleware, BasicAuthMiddleware } from './middlewares';
 
-export {
-	cleanupDependencies,
-	processUncaught,
-	logErrorOnFile,
-	processStop,
-} from './nodejs';
+export { cleanupDependencies, processUncaught, processStop } from './nodejs';
 
 export { LogResponseHook } from './hooks';
