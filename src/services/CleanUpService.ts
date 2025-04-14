@@ -1,5 +1,6 @@
 /* eslint-disable no-console */
 import { ServiceProvider } from '@piggly/ddd-toolkit';
+import debug from 'debug';
 
 /**
  * @file Handle clean up check services.
@@ -51,8 +52,14 @@ export class CleanUpService {
 		const services: Record<string, boolean> = {};
 
 		for (const [name, handler] of this.handlers) {
+			debug('app:cleanup:handler')(`cleaning up ${name}...`);
+
 			services[name] = await handler();
 			success = success && services[name];
+
+			debug('app:cleanup:handler')(
+				`${name} responded with ${services[name]}`,
+			);
 		}
 
 		return {
@@ -95,13 +102,20 @@ export class CleanUpService {
 		const services: Record<string, boolean> = {};
 
 		for (const [name, handler] of this.handlers) {
+			debug('app:cleanup:handler')(`cleaning up ${name}...`);
+
 			try {
 				services[name] = await handler();
 			} catch (error) {
 				services[name] = false;
 				console.error(error);
+				debug('app:cleanup:error')(`${name} failed to clean up`, error);
 			} finally {
 				success = success && services[name];
+
+				debug('app:cleanup:handler')(
+					`${name} responded with ${services[name]}`,
+				);
 			}
 		}
 
