@@ -83,6 +83,13 @@ export {
 	CSRFTokenMiddleware,
 } from './middlewares';
 
+export {
+	CSRFHeaderIssuerRoute,
+	CSRFCookieIssuerRoute,
+	NonceBodyIssuerRoute,
+	HealthCheckRoute,
+} from './routes';
+
 export { cleanupDependencies, processUncaught, processStop } from './nodejs';
 
 export { LogResponseHook } from './hooks';

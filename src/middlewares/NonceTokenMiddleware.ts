@@ -30,6 +30,8 @@ import { getHeaderValue } from '@/utils';
  * - Publish UnauthorizedAccessEvent.
  * - Return InvalidNonceTokenError.
  *
+ * Note: regenerated nonces will always be set in "X-Nonce-Token" header.
+ *
  * @param {Object} method The method to get the nonce token.
  * @param {string} method.from The source of the nonce token.
  * @param {string} method.param The parameter name to get the nonce token.
