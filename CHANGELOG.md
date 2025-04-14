@@ -97,3 +97,7 @@
 * Add `MissingHeaderError` error;
 * Add `InvalidNonceTokenError` error;
 * Add `InvalidCSRFTokenError` error;
+* Add more contextual data to errors at comments;
+* `ApplicationErrorEvent`, `DependencyErrorEvent` and `UnauthorizedAccessEvent` will use LoggerService to auto log them;
+* Remove `SyncErrorOnDiskHandler`. It is recommended to enable `FileLogStreamService` on LoggerService to logging errors to files;
+* Remove `AuditRequestLogger` hook. It is recommended to use `LogResponseHook` instead.

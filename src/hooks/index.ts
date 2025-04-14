@@ -1,1 +1,1 @@
-export { AuditRequestLogger } from './AuditRequestLogger';
+export { LogResponseHook } from './LogResponseHook';

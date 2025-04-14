@@ -20,7 +20,6 @@ import {
 } from '@/types';
 import { RequestNotFoundError, RequestServerError } from '@/errors';
 import { HttpInsecureServer, FastifyModifiers } from '@/www';
-import { SyncErrorOnDiskHandler } from '@/handlers';
 
 type ApiEnvironment = {
 	api: { rate: { requests: number } };
@@ -124,7 +123,6 @@ const options: ApiServerOptions<ApiServer, ApiEnvironment> = {
 	env,
 	errors: {
 		// run to all unchaught errors
-		handler: SyncErrorOnDiskHandler(env.app.root_path),
 		notFound: new RequestNotFoundError(),
 		unknown: new RequestServerError(),
 	},

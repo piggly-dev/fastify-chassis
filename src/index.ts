@@ -81,6 +81,4 @@ export {
 	processStop,
 } from './nodejs';
 
-export { SyncErrorOnDiskHandler } from './handlers';
-
-export { AuditRequestLogger } from './hooks';
+export { LogResponseHook } from './hooks';
