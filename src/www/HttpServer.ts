@@ -1,5 +1,4 @@
-/* eslint-disable no-console */
-import { ServiceProvider, LoggerService } from '@piggly/ddd-toolkit';
+import { LoggerService } from '@piggly/ddd-toolkit';
 
 import {
 	HttpServerInterface,
@@ -139,6 +138,7 @@ export class HttpServer<AppEnvironment extends DefaultEnvironment>
 							'⛔ HttpServer: An unexpected error happened while closing server',
 							err,
 						);
+
 						rej(err);
 					},
 				)
@@ -147,6 +147,7 @@ export class HttpServer<AppEnvironment extends DefaultEnvironment>
 						'⛔ HttpServer: An unexpected error happened while closing server',
 						err,
 					);
+
 					rej(err);
 				});
 		});
@@ -165,19 +166,7 @@ export class HttpServer<AppEnvironment extends DefaultEnvironment>
 	 * @author Caique Araujo <caique@piggly.com.br>
 	 */
 	protected getLogger(): LoggerService {
-		const logger = ServiceProvider.get<LoggerService>('LoggerService');
-		if (!logger) {
-			// If no logger is registered, register on console
-			// it will be a fallback to don't break the app
-			console.warn('⚠️ HttpServer: No logger registered, using fallback');
-
-			return new LoggerService({
-				alwaysOnConsole: true,
-				ignoreUnset: true,
-			});
-		}
-
-		return logger;
+		return LoggerService.softResolve();
 	}
 
 	/**
@@ -210,6 +199,7 @@ export class HttpServer<AppEnvironment extends DefaultEnvironment>
 						'⛔ HttpServer: Error while starting to listen on host',
 						err,
 					);
+
 					return rej(err);
 				}
 
