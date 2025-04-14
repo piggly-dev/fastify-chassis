@@ -243,4 +243,5 @@ dist
 # SvelteKit build / generate output
 .svelte-kit
 
+*.code-workspace
 # End of https://www.toptal.com/developers/gitignore/api/dotenv,windows,linux,macos,visualstudiocode,node
