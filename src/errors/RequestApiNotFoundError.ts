@@ -10,7 +10,12 @@ import { crc32 } from 'crc';
 export class RequestApiNotFoundError extends ApplicationError {
 	/**
 	 * Create a new instance of the error.
+	 * Useful for: Request API not found.
 	 * Code: 2975256894
+	 *
+	 * It is not an default Error class, it is a domain error.
+	 * Should be not thrown, but used as a domain error.
+	 * You may use it to return in a Result object from @piggly/ddd-toolkit.
 	 *
 	 * @param {string} [message] The error message.
 	 * @param {string} [hint] The error hint.

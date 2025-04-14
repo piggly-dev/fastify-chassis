@@ -63,9 +63,13 @@ export {
 } from './www';
 
 export {
+	UnauthorizedAccessEventPayload,
+	ApplicationErrorEventPayload,
+	DependencyErrorEventPayload,
 	UnauthorizedAccessEvent,
 	ApplicationErrorEvent,
 	DependencyErrorEvent,
+	EventOptions,
 } from './events';
 
 export { SchemaValidationMiddleware, BasicAuthMiddleware } from './middlewares';

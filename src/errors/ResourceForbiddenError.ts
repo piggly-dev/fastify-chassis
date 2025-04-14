@@ -10,7 +10,12 @@ import { crc32 } from 'crc';
 export class ResourceForbiddenError extends ApplicationError {
 	/**
 	 * Create a new instance of the error.
+	 * Useful for: Resource forbidden.
 	 * Code: 641414657
+	 *
+	 * It is not an default Error class, it is a domain error.
+	 * Should be not thrown, but used as a domain error.
+	 * You may use it to return in a Result object from @piggly/ddd-toolkit.
 	 *
 	 * @param {string} hint The error hint.
 	 * @param {string} message The error message.
