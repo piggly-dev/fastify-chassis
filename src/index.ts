@@ -35,11 +35,15 @@ export {
 } from './utils';
 
 export {
+	CookieBuilderServiceSettings,
 	CookieBuilderService,
 	HealthCheckService,
 	EnvironmentService,
+	NonceTokenService,
+	CSRFTokenService,
 	CleanUpService,
 	StartupService,
+	CookieOptions,
 } from './services';
 
 export type {
@@ -72,7 +76,12 @@ export {
 	EventOptions,
 } from './events';
 
-export { SchemaValidationMiddleware, BasicAuthMiddleware } from './middlewares';
+export {
+	SchemaValidationMiddleware,
+	NonceTokenMiddleware,
+	BasicAuthMiddleware,
+	CSRFTokenMiddleware,
+} from './middlewares';
 
 export { cleanupDependencies, processUncaught, processStop } from './nodejs';
 
