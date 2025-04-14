@@ -64,7 +64,7 @@ export const NonceTokenMiddleware =
 		const token =
 			from === 'header'
 				? getHeaderValue(request, param, '')
-				: ((request.body as any)[param] ?? '');
+				: ((request.body as any)?.[param] ?? '');
 
 		if (!token) {
 			UnauthorizedAccessEvent.publish(request);
