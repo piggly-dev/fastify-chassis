@@ -1,14 +1,14 @@
 {
 	"name": "@piggly/fastify-chassis",
-	"version": "7.0.0",
+	"version": "7.0.1",
 	"description": "An ESM/CommonJS toolkit to help you to do common operations in your back-end applications with Fastify and NodeJS.",
 	"scripts": {
 		"clean": "rimraf dist",
 		"pre:commit": "npm run format && npm run lint && npm run check",
 		"prebuild": "npm run lint && npm run format",
 		"build": "npm run clean && npm run build:types && npm run build:esm && npm run build:cjs",
-		"build:esm": "tsc -p tsconfig.esm.json && tsc-alias -p tsconfig.esm.json && node ./fixESM.cjs",
-		"build:cjs": "tsc -p tsconfig.cjs.json && tsc-alias -p tsconfig.cjs.json",
+		"build:esm": "tsc -p tsconfig.esm.json && tsc-alias -p tsconfig.esm.json --outDir dist/esm && node ./fixESM.cjs",
+		"build:cjs": "tsc -p tsconfig.cjs.json && tsc-alias -p tsconfig.cjs.json --outDir dist/cjs",
 		"build:types": "tsc -p tsconfig.types.json && tsc-alias -p tsconfig.types.json --outDir dist/types",
 		"check": "tsc --noEmit -p tsconfig.json",
 		"format": "prettier --write \"./src/**/*.ts\"",
@@ -58,7 +58,7 @@
 		"@eslint/js": "^9.24.0",
 		"@fastify/cookie": "^11.0.2",
 		"@fastify/rate-limit": "^10.1.1",
-		"@piggly/ddd-toolkit": "^4.1.1",
+		"@piggly/ddd-toolkit": "^4.1.3",
 		"@piggly/event-bus": "^3.0.0",
 		"@types/debug": "^4.1.12",
 		"@types/jest": "^29.5.14",
@@ -68,7 +68,6 @@
 		"@typescript-eslint/parser": "^8.30.0",
 		"@zerollup/ts-transform-paths": "^1.7.18",
 		"cross-env": "^7.0.3",
-		"debug": "^4.4.0",
 		"eslint": "^9.24.0",
 		"eslint-config-prettier": "^10.1.2",
 		"eslint-import-resolver-typescript": "^4.3.2",
@@ -90,12 +89,12 @@
 		"typescript-eslint": "^8.30.0",
 		"zod": "^3.24.2"
 	},
-	"peerDependencies": {
-		"@piggly/ddd-toolkit": ">=4.1",
-		"@piggly/event-bus": ">=3.0",
-		"fastify": ">=5.3",
-		"moment-timezone": ">=0.5",
-		"zod": ">=3.24"
+	"dependencies": {
+		"@piggly/event-bus": "^3.0.0",
+		"debug": "^4.4.0",
+		"fastify": "^5.3.0",
+		"moment-timezone": "^0.5.48",
+		"zod": "^3.24.2"
 	},
 	"optionalDependencies": {
 		"@fastify/cookie": ">=11.0"
