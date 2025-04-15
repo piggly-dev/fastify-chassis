@@ -106,3 +106,7 @@
 * Add CSRF and Nonce token middlewares;
 * Add general routes for health check, CSRF token and Nonce token;
 * Overall improvements and optimizations.
+
+## 7.0.1 at `2025-04-15`
+
+* [Fix] Build issues. Updating `tsc-alias` broke all builds.
