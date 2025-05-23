@@ -164,7 +164,10 @@ export abstract class AbstractServer<
 						console.error('DomainError', _error);
 					}
 
-					LoggerService.softResolve().debug('UNCAUGHT_DOMAIN_ERROR', error);
+					LoggerService.softResolve().debug(
+						'UNCAUGHT_DOMAIN_ERROR',
+						error,
+					);
 					return reply.status(error.status).send(_error);
 				}
 
@@ -175,7 +178,10 @@ export abstract class AbstractServer<
 						console.error('RuntimeError', _error);
 					}
 
-					LoggerService.softResolve().debug('UNCAUGHT_RUNTIME_ERROR', error);
+					LoggerService.softResolve().debug(
+						'UNCAUGHT_RUNTIME_ERROR',
+						error,
+					);
 					return reply.status(error.status).send(_error);
 				}
 
