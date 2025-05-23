@@ -114,3 +114,10 @@
 ## 7.0.2 at `2025-05-23`
 
 * [Fix] Errors were not being serialized correctly.
+
+## 7.1.0 at `2025-05-23`
+
+* [Add] Log as debug when `DomainError` (`UNCAUGHT_DOMAIN_ERROR`) and `RuntimeError` (`UNCAUGHT_RUNTIME_ERROR`) happens;
+* [Add] Log as error when uncaught error (`UNCAUGHT_ERROR`) happens;
+* [Change] Moved error handler to only uncaught errors;
+* [Change] Changed `cleanupDependencies` to wait for `EventBus` and `LoggerService` cleanup.

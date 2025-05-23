@@ -36,14 +36,14 @@ export const cleanupDependencies =
 			const service = ServiceProvider.get<CleanUpService>('CleanUpService');
 
 			if (service) {
-				// Register the EventBus cleanup.
-				await EventBus.instance.cleanup();
-				LoggerService.softResolve().flush();
-				await LoggerService.softResolve().cleanup();
-
 				const response = await service.softClean();
 				return response.success ? 0 : 1;
 			}
+
+			// Register the EventBus cleanup.
+			await EventBus.instance.cleanup();
+			LoggerService.softResolve().flush();
+			await LoggerService.softResolve().cleanup();
 
 			return 0;
 		} catch (error) {

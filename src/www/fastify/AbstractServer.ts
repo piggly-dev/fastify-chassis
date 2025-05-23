@@ -156,11 +156,6 @@ export abstract class AbstractServer<
 		this._app.setErrorHandler<FastifyError | DomainError | Error>(
 			(error, request, reply) => {
 				debug('http:server')('Handling error', error);
-				this._app.log.error(error);
-
-				if (this._options.errors.handler) {
-					this._options.errors.handler(error);
-				}
 
 				if (error instanceof DomainError) {
 					const _error = error.toJSON(['extra']);
@@ -169,6 +164,10 @@ export abstract class AbstractServer<
 						console.error('DomainError', _error);
 					}
 
+					LoggerService.softResolve().debug(
+						'UNCAUGHT_DOMAIN_ERROR',
+						error,
+					);
 					return reply.status(error.status).send(_error);
 				}
 
@@ -179,7 +178,17 @@ export abstract class AbstractServer<
 						console.error('RuntimeError', _error);
 					}
 
+					LoggerService.softResolve().debug(
+						'UNCAUGHT_RUNTIME_ERROR',
+						error,
+					);
 					return reply.status(error.status).send(_error);
+				}
+
+				LoggerService.softResolve().error('UNCAUGHT_ERROR', error);
+
+				if (this._options.errors.handler) {
+					this._options.errors.handler(error);
 				}
 
 				return reply
