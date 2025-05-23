@@ -33,7 +33,7 @@ export const replyError = (
 		result.error instanceof BusinessRuleViolationError ||
 		result.error.is('BusinessRuleViolationError') === true
 	) {
-		return reply.status(result.error.status).send(result.error.toJSON([]));
+		return reply.status(result.error.status).send(result.error.toJSON());
 	}
 
 	return reply

@@ -110,3 +110,7 @@
 ## 7.0.1 at `2025-04-15`
 
 * [Fix] Build issues. Updating `tsc-alias` broke all builds.
+
+## 7.0.2 at `2025-05-23`
+
+* [Fix] Errors were not being serialized correctly.
