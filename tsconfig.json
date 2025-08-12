@@ -6,6 +6,8 @@
 		"declaration": true,
 		"noUnusedLocals": true,
 		"noUnusedParameters": false,
+		"allowUnreachableCode": false,
+		"allowUnusedLabels": false,
 		"importHelpers": true,
 		"moduleResolution": "node",
 		"experimentalDecorators": true,

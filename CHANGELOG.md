@@ -121,3 +121,8 @@
 * [Add] Log as error when uncaught error (`UNCAUGHT_ERROR`) happens;
 * [Change] Moved error handler to only uncaught errors;
 * [Change] Changed `cleanupDependencies` to wait for `EventBus` and `LoggerService` cleanup.
+
+## 7.2.0 at `2025-08-12`
+
+* [Update] Dependencies to the latest version;
+* [Fix] Typing issues.
