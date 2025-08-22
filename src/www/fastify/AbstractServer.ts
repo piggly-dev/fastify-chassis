@@ -1,7 +1,11 @@
-/* eslint-disable no-console */
 import type { FastifyInstance, RawServerBase, FastifyError } from 'fastify';
 
-import { LoggerService, RuntimeError, DomainError } from '@piggly/ddd-toolkit';
+import {
+	DomainErrorHiddenProp,
+	LoggerService,
+	RuntimeError,
+	DomainError,
+} from '@piggly/ddd-toolkit';
 import debug from 'debug';
 
 import {
@@ -146,6 +150,11 @@ export abstract class AbstractServer<
 		// Not found routes
 		debug('http:server')('Setting not found handler');
 		this._app.setNotFoundHandler((request, reply) => {
+			debug('http:server')('🆘 [404] NOT FOUND', {
+				method: request.method,
+				url: request.url,
+			});
+
 			reply
 				.status(404)
 				.send(this._options.errors.notFound.toJSON(['extra']));
@@ -155,35 +164,39 @@ export abstract class AbstractServer<
 		debug('http:server')('Setting error handler');
 		this._app.setErrorHandler<FastifyError | DomainError | Error>(
 			(error, request, reply) => {
-				debug('http:server')('Handling error', error);
+				const hidden: Array<DomainErrorHiddenProp> = this._options.env.debug
+					? []
+					: ['extra'];
 
 				if (error instanceof DomainError) {
-					const _error = error.toJSON(['extra']);
-
-					if (this._options.env.debug) {
-						console.error('DomainError', _error);
-					}
+					const _error = error.toJSON(hidden);
+					debug('http:server')('🆘 DOMAIN ERROR', _error);
 
 					LoggerService.softResolve().debug(
 						'UNCAUGHT_DOMAIN_ERROR',
 						error,
 					);
+
 					return reply.status(error.status).send(_error);
 				}
 
 				if (error instanceof RuntimeError) {
-					const _error = error.toJSON(['extra']);
-
-					if (this._options.env.debug) {
-						console.error('RuntimeError', _error);
-					}
+					const _error = error.toJSON(hidden);
+					debug('http:server')('🆘 RUNTIME ERROR', _error);
 
 					LoggerService.softResolve().debug(
 						'UNCAUGHT_RUNTIME_ERROR',
 						error,
 					);
+
 					return reply.status(error.status).send(_error);
 				}
+
+				debug('http:server')('🆘 UNKNOWN ERROR', {
+					message: error.message,
+					name: error.name,
+					stack: error.stack,
+				});
 
 				LoggerService.softResolve().error('UNCAUGHT_ERROR', error);
 
@@ -193,7 +206,7 @@ export abstract class AbstractServer<
 
 				return reply
 					.status(500)
-					.send(this._options.errors.unknown.toJSON(['extra']));
+					.send(this._options.errors.unknown.toJSON(hidden));
 			},
 		);
 	}
@@ -201,6 +214,7 @@ export abstract class AbstractServer<
 	/**
 	 * Get the default logger configuration.
 	 *
+	 * @deprecated There is no reason to log with fastify. High memory usage and throughput.
 	 * @public
 	 * @static
 	 * @memberof AbstractServer
