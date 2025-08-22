@@ -21,6 +21,7 @@ export class Http2InsecureServer<
 	 * @constructor
 	 * @memberof ApiServer
 	 * @since 1.0.0
+	 * @since 7.2.1 Disable fastify logs.
 	 * @author Caique Araujo <caique@piggly.com.br>
 	 */
 	constructor(
@@ -33,13 +34,8 @@ export class Http2InsecureServer<
 				fastifyOptions || {
 					disableRequestLogging: options.env.environment === 'production',
 					http2: true,
-					logger:
-						options.fastify.logger ||
-						AbstractServer.defaultLogger(
-							options.env.environment,
-							options.env.app.root_path,
-							options.env.debug,
-						),
+					/** @note There is no reason to log with fastify. */
+					logger: false,
 					trustProxy: true,
 				},
 			),

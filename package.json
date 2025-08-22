@@ -1,6 +1,6 @@
 {
 	"name": "@piggly/fastify-chassis",
-	"version": "7.2.0",
+	"version": "7.2.1",
 	"description": "An ESM/CommonJS toolkit to help you to do common operations in your back-end applications with Fastify and NodeJS.",
 	"scripts": {
 		"clean": "rimraf dist",
@@ -54,11 +54,13 @@
 	"bugs": {
 		"url": "https://github.com/piggly-dev/fastify-chassis/issues"
 	},
+	"publishConfig": {
+		"access": "public"
+	},
 	"devDependencies": {
 		"@eslint/js": "^9.33.0",
 		"@fastify/cookie": "^11.0.2",
 		"@fastify/rate-limit": "^10.3.0",
-		"@piggly/ddd-toolkit": "^4.2.0",
 		"@piggly/event-bus": "^3.0.0",
 		"@types/debug": "^4.1.12",
 		"@types/jest": "^30.0.0",
@@ -91,6 +93,7 @@
 		"zod": "^4.0.17"
 	},
 	"dependencies": {
+		"@piggly/ddd-toolkit": "^5.0.0-alpha.1",
 		"@piggly/event-bus": "^3.0.0",
 		"debug": "^4.4.1",
 		"fastify": "^5.5.0",

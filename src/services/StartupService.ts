@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 import { ServiceProvider } from '@piggly/ddd-toolkit';
 import debug from 'debug';
 
@@ -70,7 +69,6 @@ export class StartupService {
 				services[name] = await handler();
 			} catch (error) {
 				services[name] = false;
-				console.error(error);
 				debug('app:startup:error')(`${name} failed to start`, error);
 			} finally {
 				success = success && services[name];

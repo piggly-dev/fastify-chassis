@@ -1,4 +1,4 @@
-/* eslint-disable no-console */
+import debug from 'debug';
 
 /**
  * @file Handle health check services.
@@ -53,7 +53,10 @@ export class HealthCheckService {
 				services[name] = await handler();
 			} catch (error) {
 				services[name] = false;
-				console.error(error);
+				debug('app:healthcheck:error')(
+					`${name} failed to health check`,
+					error,
+				);
 			} finally {
 				success = success && services[name];
 			}

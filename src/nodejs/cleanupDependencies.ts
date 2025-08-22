@@ -47,10 +47,7 @@ export const cleanupDependencies =
 
 			return 0;
 		} catch (error) {
-			/* eslint-disable-next-line no-console */
-			console.error(error);
 			debug('app:cleanup:error')(error);
-
 			return 1;
 		}
 	};

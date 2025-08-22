@@ -126,3 +126,9 @@
 
 * [Update] Dependencies to the latest version;
 * [Fix] Typing issues.
+
+## 7.2.1 at `2025-08-22`
+
+* [Update] Using the alpha version of `@piggly/ddd-toolkit`;
+* [Fix] Enhanced debug logging and messages;
+* [Change] Deprecated fastify logging, it will always be `false` since now.

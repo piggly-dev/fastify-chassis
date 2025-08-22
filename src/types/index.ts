@@ -76,6 +76,7 @@ export type ApiServerOptions<
 		notFound: JSONExportable;
 		unknown: JSONExportable;
 	};
+	/** @deprecated There is no reason to log with fastify. High memory usage and throughput. */
 	fastify: { logger?: FastifyBaseLogger | boolean };
 	hooks: {
 		afterInit?: FastifyModifierCallable<Server, AppEnvironment>;
