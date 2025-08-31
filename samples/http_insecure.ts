@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import type {
 	RouteGenericInterface,
 	FastifyInstance,
@@ -11,7 +12,6 @@ import fs from 'fs';
 
 import { ServiceProvider, LoggerService } from '@piggly/ddd-toolkit';
 import fastifyRateLimit from '@fastify/rate-limit';
-import moment from 'moment-timezone';
 
 import {
 	FastifyModifierCallable,
@@ -145,7 +145,7 @@ const serverUncaught = (reason: any, origin: any) => {
 		errs.push(`reason: ${reason.stack || reason}`);
 	}
 
-	const err = `[${moment().utc().format()}] > ${errs.join(', ')}.\n`;
+	const err = `[${new Date().toISOString()}] > ${errs.join(', ')}.\n`;
 	console.error(err);
 
 	fs.appendFileSync(`${env.app.root_path}/logs/error.log`, err);
