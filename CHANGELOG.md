@@ -132,3 +132,8 @@
 * [Update] Using the alpha version of `@piggly/ddd-toolkit`;
 * [Fix] Enhanced debug logging and messages;
 * [Change] Deprecated fastify logging, it will always be `false` since now.
+
+## 7.2.2 at `2025-08-31`
+
+* [Update] Using the alpha version of `@piggly/ddd-toolkit`;
+* [Uninstall] Removed `moment-timezone` dependency.

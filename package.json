@@ -1,6 +1,6 @@
 {
 	"name": "@piggly/fastify-chassis",
-	"version": "7.2.1",
+	"version": "7.2.2",
 	"description": "An ESM/CommonJS toolkit to help you to do common operations in your back-end applications with Fastify and NodeJS.",
 	"scripts": {
 		"clean": "rimraf dist",
@@ -80,7 +80,6 @@
 		"globals": "^16.3.0",
 		"husky": "^9.1.7",
 		"jest": "^30.0.5",
-		"moment-timezone": "^0.6.0",
 		"prettier": "^3.6.2",
 		"rimraf": "^6.0.1",
 		"ts-jest": "^29.4.1",
@@ -93,11 +92,10 @@
 		"zod": "^4.0.17"
 	},
 	"dependencies": {
-		"@piggly/ddd-toolkit": "^5.0.0-alpha.1",
+		"@piggly/ddd-toolkit": "^5.0.0-alpha.8",
 		"@piggly/event-bus": "^3.0.0",
 		"debug": "^4.4.1",
 		"fastify": "^5.5.0",
-		"moment-timezone": "^0.6.0",
 		"zod": "^4.0.17"
 	},
 	"optionalDependencies": {
