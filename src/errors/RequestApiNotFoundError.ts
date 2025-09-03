@@ -1,5 +1,4 @@
 import { ApplicationError } from '@piggly/ddd-toolkit';
-import { crc32 } from 'crc';
 
 /**
  * @file The error to be thrown when the requested resource is not found.
@@ -27,7 +26,6 @@ export class RequestApiNotFoundError extends ApplicationError {
 	constructor(message?: string, hint?: string, extra?: Record<string, any>) {
 		super(
 			'RequestApiNotFoundError',
-			crc32('RequestApiNotFoundError'),
 			message ?? 'Cannot find the requested resource.',
 			404,
 			hint ?? 'Check the request URL and try again.',

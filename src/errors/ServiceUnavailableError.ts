@@ -1,5 +1,4 @@
 import { ApplicationError } from '@piggly/ddd-toolkit';
-import { crc32 } from 'crc';
 
 /**
  * @file The error to be thrown when the requested service is unavailable.
@@ -27,7 +26,6 @@ export class ServiceUnavailableError extends ApplicationError {
 	constructor(message?: string, hint?: string, extra?: Record<string, any>) {
 		super(
 			'ServiceUnavailableError',
-			crc32('ServiceUnavailableError'),
 			message ?? `Requested service is unavailable.`,
 			503,
 			hint ?? `You may try again later.`,

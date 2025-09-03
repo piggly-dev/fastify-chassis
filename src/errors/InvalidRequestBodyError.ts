@@ -1,5 +1,4 @@
 import { ApplicationError } from '@piggly/ddd-toolkit';
-import { crc32 } from 'crc';
 
 /**
  * @file This error should be thrown when the request body is invalid.
@@ -28,7 +27,6 @@ export class InvalidRequestBodyError extends ApplicationError {
 	constructor(message?: string, hint?: string, extra?: Record<string, any>) {
 		super(
 			'InvalidRequestBodyError',
-			crc32('InvalidRequestBodyError'),
 			message || 'Invalid request body.',
 			422,
 			hint || 'One or more values were not accepted at request body.',

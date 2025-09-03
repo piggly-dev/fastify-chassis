@@ -1,7 +1,6 @@
 import { randomUUID } from 'crypto';
 
 import { ApplicationError } from '@piggly/ddd-toolkit';
-import { crc32 } from 'crc';
 
 import { ApplicationErrorEvent } from '@/events';
 
@@ -35,7 +34,6 @@ export class RequestApiServerError extends ApplicationError {
 
 		super(
 			'RequestApiServerError',
-			crc32('RequestApiServerError'),
 			'Cannot process the request at this moment.',
 			error?.status || 500,
 			`Contact administrator and inform the following code: "${hash}".`,

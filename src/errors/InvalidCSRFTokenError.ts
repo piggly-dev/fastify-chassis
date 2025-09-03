@@ -1,5 +1,4 @@
 import { ApplicationError } from '@piggly/ddd-toolkit';
-import { crc32 } from 'crc';
 
 /**
  * @file This error should be thrown when the CSRF token is invalid.
@@ -27,7 +26,6 @@ export class InvalidCSRFTokenError extends ApplicationError {
 	constructor(message?: string, hint?: string, extra?: Record<string, any>) {
 		super(
 			'InvalidCSRFTokenError',
-			crc32('InvalidCSRFTokenError'),
 			message || 'Invalid CSRF token.',
 			403,
 			hint || 'The provided CSRF token is invalid.',

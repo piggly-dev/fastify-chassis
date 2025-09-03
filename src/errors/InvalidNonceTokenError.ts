@@ -1,5 +1,4 @@
 import { ApplicationError } from '@piggly/ddd-toolkit';
-import { crc32 } from 'crc';
 
 /**
  * @file This error should be thrown when access is not allowed.
@@ -27,7 +26,6 @@ export class InvalidNonceTokenError extends ApplicationError {
 	constructor(message?: string, hint?: string, extra?: Record<string, any>) {
 		super(
 			'InvalidNonceTokenError',
-			crc32('InvalidNonceTokenError'),
 			message || 'Invalid nonce token.',
 			403,
 			hint || 'The provided nonce token is invalid.',

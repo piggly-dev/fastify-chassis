@@ -1,5 +1,4 @@
 import { ApplicationError } from '@piggly/ddd-toolkit';
-import { crc32 } from 'crc';
 
 /**
  * @file This error should be thrown when crendentials is not allowed.
@@ -27,7 +26,6 @@ export class UnauthorizedError extends ApplicationError {
 	constructor(message?: string, hint?: string, extra?: Record<string, any>) {
 		super(
 			'UnauthorizedError',
-			crc32('UnauthorizedError'),
 			message || 'Credentials not allowed.',
 			401,
 			hint || 'Your credentials are invalid or expired.',
