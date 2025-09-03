@@ -1,5 +1,4 @@
 import { ApplicationError } from '@piggly/ddd-toolkit';
-import { crc32 } from 'crc';
 
 /**
  * @file This error should be thrown when server cannot handle the request.
@@ -27,7 +26,6 @@ export class RequestServerError extends ApplicationError {
 	constructor(message?: string, hint?: string, extra?: Record<string, any>) {
 		super(
 			'RequestServerError',
-			crc32('RequestServerError'),
 			message || 'Something went wrong.',
 			500,
 			hint ||

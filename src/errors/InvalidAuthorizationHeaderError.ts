@@ -1,5 +1,4 @@
 import { ApplicationError } from '@piggly/ddd-toolkit';
-import { crc32 } from 'crc';
 
 /**
  * @file This error should be thrown when authorization header is invalid.
@@ -27,7 +26,6 @@ export class InvalidAuthorizationHeaderError extends ApplicationError {
 	constructor(message?: string, hint?: string, extra?: Record<string, any>) {
 		super(
 			'InvalidAuthorizationHeaderError',
-			crc32('InvalidAuthorizationHeaderError'),
 			message || 'Invalid authorization header.',
 			401,
 			hint || 'The `Authorization` header must be of `Bearer` type.',

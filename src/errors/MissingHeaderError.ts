@@ -1,5 +1,4 @@
 import { ApplicationError } from '@piggly/ddd-toolkit';
-import { crc32 } from 'crc';
 
 /**
  * @file This error should be thrown when header is missing.
@@ -33,7 +32,6 @@ export class MissingHeaderError extends ApplicationError {
 	) {
 		super(
 			'MissingHeaderError',
-			crc32('MissingHeaderError'),
 			message || 'Missing header.',
 			422,
 			hint || `The "${header}" header is required.`,

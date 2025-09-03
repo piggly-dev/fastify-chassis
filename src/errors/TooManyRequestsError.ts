@@ -1,5 +1,4 @@
 import { ApplicationError } from '@piggly/ddd-toolkit';
-import { crc32 } from 'crc';
 
 /**
  * @file This error should be thrown when the rate limit is exceeded.
@@ -25,7 +24,6 @@ export class TooManyRequestsError extends ApplicationError {
 	constructor(after: string) {
 		super(
 			'TooManyRequestsError',
-			crc32('TooManyRequestsError'),
 			'Too many requests.',
 			429,
 			`Rate limit exceeded. Retry in ${after}.`,

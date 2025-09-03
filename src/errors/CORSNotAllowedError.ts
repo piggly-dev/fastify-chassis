@@ -1,5 +1,4 @@
 import { ApplicationError } from '@piggly/ddd-toolkit';
-import { crc32 } from 'crc';
 
 /**
  * @file This error should be thrown when CORS is not allowed.
@@ -24,7 +23,6 @@ export class CORSNotAllowedError extends ApplicationError {
 	constructor() {
 		super(
 			'CORSNotAllowedError',
-			crc32('CORSNotAllowedError'),
 			'The request is not allowed by CORS.',
 			403,
 			'Check the request URL and try again.',

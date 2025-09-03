@@ -137,3 +137,8 @@
 
 * [Update] Using the alpha version of `@piggly/ddd-toolkit`;
 * [Uninstall] Removed `moment-timezone` dependency.
+
+## 7.2.3 at `2025-09-02`
+
+* [Update] Using the alpha version of `@piggly/ddd-toolkit`;
+* [Uninstall] Removed `crc` dependency.
