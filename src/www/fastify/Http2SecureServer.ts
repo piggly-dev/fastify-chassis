@@ -2,9 +2,9 @@ import { Http2SecureServer as Server } from 'http2';
 
 import fastify, { FastifyHttp2SecureOptions } from 'fastify';
 
-import { DefaultEnvironment, ApiServerOptions } from '@/types';
+import type { DefaultEnvironment, ApiServerOptions } from '@/types/index.js';
 
-import { AbstractServer } from './AbstractServer';
+import { AbstractServer } from '@/www/fastify/AbstractServer.js';
 
 /**
  * @file The API server.

@@ -3,9 +3,12 @@ import type { FastifyRequest } from 'fastify';
 import { EventPayload, EventBus } from '@piggly/event-bus';
 import { LoggerService } from '@piggly/ddd-toolkit';
 
-import { getIp } from '@/utils';
+import type {
+	UnauthorizedAccessEventPayload,
+	EventOptions,
+} from '@/events/types/index.js';
 
-import { UnauthorizedAccessEventPayload, EventOptions } from './types';
+import { getIp } from '@/utils/index.js';
 
 /**
  * @file This event should be published when an unauthorized access occurs.

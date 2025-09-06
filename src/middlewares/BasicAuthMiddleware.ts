@@ -4,9 +4,9 @@ import type {
 	FastifyReply,
 } from 'fastify';
 
-import { UnauthorizedAccessEvent } from '@/events';
-import { UnauthorizedError } from '@/errors';
-import { getBasicToken } from '@/utils';
+import { UnauthorizedAccessEvent } from '@/events/index.js';
+import { UnauthorizedError } from '@/errors/index.js';
+import { getBasicToken } from '@/utils/index.js';
 
 /**
  * BasicAuthMiddleware is a middleware that checks if the request

@@ -7,7 +7,7 @@ import type {
 import { evaluateSchema, DomainError, Result } from '@piggly/ddd-toolkit';
 import { z } from 'zod';
 
-import { replyError, getBody } from '@/utils';
+import { replyError, getBody } from '@/utils/index.js';
 
 /**
  * SchemaValidationMiddleware is a middleware that validates the request

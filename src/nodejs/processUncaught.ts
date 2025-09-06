@@ -2,7 +2,7 @@
 import { LoggerService } from '@piggly/ddd-toolkit';
 import EventBus from '@piggly/event-bus';
 
-import type { DefaultEnvironment } from '@/types';
+import type { DefaultEnvironment } from '@/types/index.js';
 
 /**
  * Process uncaught error.

@@ -1,6 +1,9 @@
 import type { FastifyInstance, RawServerBase } from 'fastify';
 
-import { FastifyModifierCallable, FastifyAppliable } from '@/types';
+import type {
+	FastifyModifierCallable,
+	FastifyAppliable,
+} from '@/types/index.js';
 
 /**
  * @file The Fastify modifier.

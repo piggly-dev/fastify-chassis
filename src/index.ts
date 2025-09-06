@@ -16,7 +16,7 @@ export {
 	MissingHeaderError,
 	UnauthorizedError,
 	ForbiddenError,
-} from './errors';
+} from '@/errors/index.js';
 
 export {
 	getHeaderValues,
@@ -32,10 +32,9 @@ export {
 	getQuery,
 	getBody,
 	getIp,
-} from './utils';
+} from '@/utils/index.js';
 
 export {
-	CookieBuilderServiceSettings,
 	CookieBuilderService,
 	HealthCheckService,
 	EnvironmentService,
@@ -43,8 +42,12 @@ export {
 	CSRFTokenService,
 	CleanUpService,
 	StartupService,
+} from '@/services/index.js';
+
+export {
+	CookieBuilderServiceSettings,
 	CookieOptions,
-} from './services';
+} from '@/services/index.js';
 
 export type {
 	FastifyModifierCallable,
@@ -54,7 +57,7 @@ export type {
 	FastifyAppliable,
 	ApiServerOptions,
 	FastifyServer,
-} from './types';
+} from '@/types/index.js';
 
 export {
 	Http2InsecureServer,
@@ -64,32 +67,39 @@ export {
 	FastifyModifiers,
 	AbstractServer,
 	HttpServer,
-} from './www';
+} from '@/www/index.js';
 
 export {
-	UnauthorizedAccessEventPayload,
-	ApplicationErrorEventPayload,
-	DependencyErrorEventPayload,
 	UnauthorizedAccessEvent,
 	ApplicationErrorEvent,
 	DependencyErrorEvent,
+} from '@/events/index.js';
+
+export type {
+	UnauthorizedAccessEventPayload,
+	ApplicationErrorEventPayload,
+	DependencyErrorEventPayload,
 	EventOptions,
-} from './events';
+} from '@/events/index.js';
 
 export {
 	SchemaValidationMiddleware,
 	NonceTokenMiddleware,
 	BasicAuthMiddleware,
 	CSRFTokenMiddleware,
-} from './middlewares';
+} from '@/middlewares/index.js';
 
 export {
 	CSRFHeaderIssuerRoute,
 	CSRFCookieIssuerRoute,
 	NonceBodyIssuerRoute,
 	HealthCheckRoute,
-} from './routes';
+} from '@/routes/index.js';
 
-export { cleanupDependencies, processUncaught, processStop } from './nodejs';
+export {
+	cleanupDependencies,
+	processUncaught,
+	processStop,
+} from '@/nodejs/index.js';
 
-export { LogResponseHook } from './hooks';
+export { LogResponseHook } from '@/hooks/index.js';

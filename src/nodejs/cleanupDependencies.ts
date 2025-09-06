@@ -4,9 +4,8 @@ import { ServiceProvider, LoggerService } from '@piggly/ddd-toolkit';
 import EventBus from '@piggly/event-bus';
 import debug from 'debug';
 
-import type { HttpServerInterface, DefaultEnvironment } from '@/types';
-
-import { CleanUpService } from '@/services';
+import type { HttpServerInterface, DefaultEnvironment } from '@/types/index.js';
+import type { CleanUpService } from '@/services/index.js';
 
 /**
  * Cleanup dependencies.

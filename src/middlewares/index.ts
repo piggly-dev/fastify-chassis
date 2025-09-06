@@ -1,4 +1,4 @@
-export { BasicAuthMiddleware } from './BasicAuthMiddleware';
-export { CSRFTokenMiddleware } from './CSRFTokenMiddleware';
-export { NonceTokenMiddleware } from './NonceTokenMiddleware';
-export { SchemaValidationMiddleware } from './SchemaValidationMiddleware';
+export { BasicAuthMiddleware } from '@/middlewares/BasicAuthMiddleware.js';
+export { CSRFTokenMiddleware } from '@/middlewares/CSRFTokenMiddleware.js';
+export { NonceTokenMiddleware } from '@/middlewares/NonceTokenMiddleware.js';
+export { SchemaValidationMiddleware } from '@/middlewares/SchemaValidationMiddleware.js';

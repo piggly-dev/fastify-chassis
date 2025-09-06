@@ -1,10 +1,10 @@
-export { ApplicationErrorEvent } from './ApplicationErrorEvent';
-export { DependencyErrorEvent } from './DependencyErrorEvent';
-export { UnauthorizedAccessEvent } from './UnauthorizedAccessEvent';
+export { ApplicationErrorEvent } from '@/events/ApplicationErrorEvent.js';
+export { DependencyErrorEvent } from '@/events/DependencyErrorEvent.js';
+export { UnauthorizedAccessEvent } from '@/events/UnauthorizedAccessEvent.js';
 
-export {
+export type {
 	UnauthorizedAccessEventPayload,
 	ApplicationErrorEventPayload,
 	DependencyErrorEventPayload,
 	EventOptions,
-} from './types';
+} from '@/events/types/index.js';

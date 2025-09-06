@@ -4,10 +4,10 @@ import type {
 	FastifyReply,
 } from 'fastify';
 
-import type { CSRFTokenService } from '@/services';
+import type { CSRFTokenService } from '@/services/index.js';
 
-import { UnauthorizedAccessEvent } from '@/events';
-import { InvalidCSRFTokenError } from '@/errors';
+import { UnauthorizedAccessEvent } from '@/events/index.js';
+import { InvalidCSRFTokenError } from '@/errors/index.js';
 
 /**
  * CSRF token middleware.

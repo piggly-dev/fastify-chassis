@@ -1,4 +1,4 @@
-export { CSRFCookieIssuerRoute } from './CSRFCookieIssuerRouter';
-export { CSRFHeaderIssuerRoute } from './CSRFHeaderIssuerRouter';
-export { HealthCheckRoute } from './HealthCheckRoute';
-export { NonceBodyIssuerRoute } from './NonceBodyIssuerRouter';
+export { CSRFCookieIssuerRoute } from '@/routes/CSRFCookieIssuerRouter.js';
+export { CSRFHeaderIssuerRoute } from '@/routes/CSRFHeaderIssuerRouter.js';
+export { HealthCheckRoute } from '@/routes/HealthCheckRoute.js';
+export { NonceBodyIssuerRoute } from '@/routes/NonceBodyIssuerRouter.js';

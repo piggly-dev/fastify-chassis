@@ -11,6 +11,6 @@ export {
 	getQuery,
 	getBody,
 	getIp,
-} from './request';
+} from '@/utils/request.js';
 
-export { mountURL } from './global';
+export { mountURL } from '@/utils/global.js';

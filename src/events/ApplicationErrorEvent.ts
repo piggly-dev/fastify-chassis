@@ -1,7 +1,10 @@
 import { EventPayload, EventBus } from '@piggly/event-bus';
 import { LoggerService } from '@piggly/ddd-toolkit';
 
-import { ApplicationErrorEventPayload, EventOptions } from './types';
+import type {
+	ApplicationErrorEventPayload,
+	EventOptions,
+} from '@/events/types/index.js';
 
 /**
  * @file This event should be published when an error occurs.

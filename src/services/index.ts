@@ -1,11 +1,13 @@
-export { CleanUpService } from './CleanUpService';
-export {
+export { CleanUpService } from '@/services/CleanUpService.js';
+
+export { CookieBuilderService } from '@/services/CookieBuilderService.js';
+export type {
 	CookieBuilderServiceSettings,
-	CookieBuilderService,
 	CookieOptions,
-} from './CookieBuilderService';
-export { CSRFTokenService } from './CSRFTokenService';
-export { EnvironmentService } from './EnvironmentService';
-export { HealthCheckService } from './HealthCheckService';
-export { NonceTokenService } from './NonceTokenService';
-export { StartupService } from './StartupService';
+} from '@/services/CookieBuilderService.js';
+
+export { CSRFTokenService } from '@/services/CSRFTokenService.js';
+export { EnvironmentService } from '@/services/EnvironmentService.js';
+export { HealthCheckService } from '@/services/HealthCheckService.js';
+export { NonceTokenService } from '@/services/NonceTokenService.js';
+export { StartupService } from '@/services/StartupService.js';
