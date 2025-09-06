@@ -1,7 +1,7 @@
-export { AbstractServer } from './fastify/AbstractServer';
-export { Http2InsecureServer } from './fastify/Http2InsecureServer';
-export { Http2SecureServer } from './fastify/Http2SecureServer';
-export { HttpInsecureServer } from './fastify/HttpInsecureServer';
-export { HttpSecureServer } from './fastify/HttpSecureServer';
-export { FastifyModifiers } from './FastifyModifiers';
-export { HttpServer } from './HttpServer';
+export { AbstractServer } from '@/www/fastify/AbstractServer.js';
+export { Http2InsecureServer } from '@/www/fastify/Http2InsecureServer.js';
+export { Http2SecureServer } from '@/www/fastify/Http2SecureServer.js';
+export { HttpInsecureServer } from '@/www/fastify/HttpInsecureServer.js';
+export { HttpSecureServer } from '@/www/fastify/HttpSecureServer.js';
+export { FastifyModifiers } from '@/www/FastifyModifiers.js';
+export { HttpServer } from '@/www/HttpServer.js';

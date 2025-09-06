@@ -4,11 +4,11 @@ import type {
 	FastifyReply,
 } from 'fastify';
 
-import type { NonceTokenService } from '@/services';
+import type { NonceTokenService } from '@/services/index.js';
 
-import { UnauthorizedAccessEvent } from '@/events';
-import { InvalidNonceTokenError } from '@/errors';
-import { getHeaderValue } from '@/utils';
+import { UnauthorizedAccessEvent } from '@/events/index.js';
+import { InvalidNonceTokenError } from '@/errors/index.js';
+import { getHeaderValue } from '@/utils/index.js';
 
 /**
  * Nonce token middleware.

@@ -1,1 +1,1 @@
-export { LogResponseHook } from './LogResponseHook';
+export { LogResponseHook } from '@/hooks/LogResponseHook.js';

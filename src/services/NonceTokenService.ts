@@ -1,9 +1,9 @@
 import {
 	ServiceProvider,
-	CryptoService,
 	IStoreService,
 	TOrUndefined,
 } from '@piggly/ddd-toolkit';
+import { CryptoService } from '@piggly/ddd-toolkit/crypto';
 
 /**
  * @file Nonce service.

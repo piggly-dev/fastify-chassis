@@ -8,15 +8,15 @@ import {
 } from '@piggly/ddd-toolkit';
 import debug from 'debug';
 
-import {
+import type {
 	HttpServerInterface,
 	ApiServerInterface,
 	DefaultEnvironment,
 	ApiServerOptions,
-} from '@/types';
-import { EnvironmentService } from '@/services';
+} from '@/types/index.js';
 
-import { HttpServer } from '../HttpServer';
+import { EnvironmentService } from '@/services/index.js';
+import { HttpServer } from '@/www/HttpServer.js';
 
 /**
  * @file The API server.

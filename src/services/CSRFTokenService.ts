@@ -1,10 +1,13 @@
 import type { FastifyRequest, FastifyReply } from 'fastify';
 
-import { CryptoService } from '@piggly/ddd-toolkit';
+import { CryptoService } from '@piggly/ddd-toolkit/crypto';
 
-import { getHeaderValue } from '@/utils';
+import type {
+	CookieBuilderService,
+	CookieOptions,
+} from '@/services/CookieBuilderService.js';
 
-import { CookieBuilderService, CookieOptions } from './CookieBuilderService';
+import { getHeaderValue } from '@/utils/index.js';
 
 /**
  * @file CSRF token service.

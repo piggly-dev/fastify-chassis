@@ -1,14 +1,14 @@
 {
 	"compilerOptions": {
 		"target": "esnext",
-		"module": "commonjs",
+		"module": "nodenext",
 		"strict": true,
 		"declaration": false,
 		"emitDeclarationOnly": false,
 		"noUnusedLocals": true,
 		"noUnusedParameters": false,
 		"importHelpers": true,
-		"moduleResolution": "node",
+		"moduleResolution": "nodenext",
 		"experimentalDecorators": true,
 		"esModuleInterop": true,
 		"allowSyntheticDefaultImports": true,

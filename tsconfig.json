@@ -1,7 +1,7 @@
 {
 	"compilerOptions": {
 		"target": "esnext",
-		"module": "esnext",
+		"module": "nodenext",
 		"strict": true,
 		"declaration": true,
 		"noUnusedLocals": true,
@@ -9,7 +9,7 @@
 		"allowUnreachableCode": false,
 		"allowUnusedLabels": false,
 		"importHelpers": true,
-		"moduleResolution": "node",
+		"moduleResolution": "nodenext",
 		"experimentalDecorators": true,
 		"esModuleInterop": true,
 		"allowSyntheticDefaultImports": true,

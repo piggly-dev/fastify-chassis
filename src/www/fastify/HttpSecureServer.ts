@@ -2,9 +2,9 @@ import { Server } from 'https';
 
 import fastify, { FastifyHttpsOptions } from 'fastify';
 
-import { DefaultEnvironment, ApiServerOptions } from '@/types';
+import type { DefaultEnvironment, ApiServerOptions } from '@/types/index.js';
 
-import { AbstractServer } from './AbstractServer';
+import { AbstractServer } from '@/www/fastify/AbstractServer.js';
 
 /**
  * @file The API server.

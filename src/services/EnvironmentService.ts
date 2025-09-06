@@ -1,6 +1,6 @@
 import { ServiceProvider } from '@piggly/ddd-toolkit';
 
-import { DefaultEnvironment } from '@/types';
+import type { DefaultEnvironment } from '@/types/index.js';
 
 /**
  * @file The environment settings service.

@@ -4,7 +4,7 @@ import {
 	HttpServerInterface,
 	ApiServerInterface,
 	DefaultEnvironment,
-} from '@/types';
+} from '@/types/index.js';
 
 /**
  * @file The HTTP server.

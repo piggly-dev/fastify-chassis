@@ -26,6 +26,7 @@ export default [
 			'**/knexfile.js',
 			'database/**/*',
 			'**/fixESM.cjs',
+			'**/fixTypes.cjs',
 		],
 	},
 	{
@@ -80,7 +81,7 @@ export default [
 			],
 			'import/extensions': [
 				'error',
-				'always',
+				'ignorePackages',
 				{
 					ts: 'never',
 				},
