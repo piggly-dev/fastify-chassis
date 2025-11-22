@@ -16,7 +16,12 @@ import type { Http2SecureServer } from '@/www/fastify/Http2SecureServer';
 import type { HttpSecureServer } from '@/www/fastify/HttpSecureServer';
 
 /** Environment */
+export type ApiDefaultEnvironment = DefaultEnvironment;
+
 export type DefaultEnvironment = {
+	debug: boolean;
+	environment: EnvironmentType;
+
 	api: {
 		rest: {
 			host: string;
@@ -24,18 +29,11 @@ export type DefaultEnvironment = {
 			port: number;
 		};
 	};
-	app: {
-		root_path: string;
-		timezone: string;
-	};
-
-	debug: boolean;
-	environment: EnvironmentType;
 };
 
 /** Fastify server */
 export type FastifyServer<
-	AppEnvironment extends DefaultEnvironment = DefaultEnvironment,
+	AppEnvironment extends ApiDefaultEnvironment = ApiDefaultEnvironment,
 > =
 	| Http2InsecureServer<AppEnvironment>
 	| HttpInsecureServer<AppEnvironment>
@@ -45,21 +43,21 @@ export type FastifyServer<
 /** Fastify modifiers */
 export interface FastifyAppliable<
 	Server extends RawServerBase,
-	AppEnvironment = DefaultEnvironment,
+	AppEnvironment = ApiDefaultEnvironment,
 > {
 	apply: FastifyModifierCallable<Server, AppEnvironment>;
 }
 
 export type FastifyModifierCallable<
 	Server extends RawServerBase,
-	AppEnvironment = DefaultEnvironment,
+	AppEnvironment = ApiDefaultEnvironment,
 > = (app: FastifyInstance<Server>, env: AppEnvironment) => Promise<void>;
 
 /** Servers */
 
 export interface ApiServerInterface<
 	Server extends RawServerBase,
-	AppEnvironment extends DefaultEnvironment,
+	AppEnvironment extends ApiDefaultEnvironment,
 > {
 	bootstrap: () => Promise<HttpServerInterface<Server, AppEnvironment>>;
 	getApp: () => FastifyInstance<Server>;
@@ -68,7 +66,7 @@ export interface ApiServerInterface<
 
 export type ApiServerOptions<
 	Server extends RawServerBase = RawServerDefault,
-	AppEnvironment = DefaultEnvironment,
+	AppEnvironment = ApiDefaultEnvironment,
 > = {
 	env: AppEnvironment;
 	errors: {
@@ -89,7 +87,7 @@ export type ApiServerOptions<
 
 export interface HttpServerInterface<
 	Server extends RawServerBase,
-	AppEnvironment extends DefaultEnvironment,
+	AppEnvironment extends ApiDefaultEnvironment,
 > {
 	getApi: () => ApiServerInterface<Server, AppEnvironment>;
 	restart(): Promise<boolean>;

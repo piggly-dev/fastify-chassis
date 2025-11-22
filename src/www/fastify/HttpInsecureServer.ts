@@ -2,7 +2,7 @@ import { Server } from 'http';
 
 import fastify, { FastifyHttpOptions } from 'fastify';
 
-import type { DefaultEnvironment, ApiServerOptions } from '@/types/index.js';
+import type { ApiDefaultEnvironment, ApiServerOptions } from '@/types/index.js';
 
 import { AbstractServer } from '@/www/fastify/AbstractServer.js';
 
@@ -11,7 +11,7 @@ import { AbstractServer } from '@/www/fastify/AbstractServer.js';
  * @copyright Piggly Lab 2023
  */
 export class HttpInsecureServer<
-	AppEnvironment extends DefaultEnvironment,
+	AppEnvironment extends ApiDefaultEnvironment,
 > extends AbstractServer<Server, AppEnvironment> {
 	/**
 	 * Create a new API server.

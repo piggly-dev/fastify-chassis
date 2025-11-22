@@ -15,7 +15,7 @@ import fastifyRateLimit from '@fastify/rate-limit';
 
 import {
 	FastifyModifierCallable,
-	DefaultEnvironment,
+	ApiDefaultEnvironment,
 	ApiServerOptions,
 } from '@/types';
 import { RequestNotFoundError, RequestServerError } from '@/errors';
@@ -23,7 +23,8 @@ import { HttpInsecureServer, FastifyModifiers } from '@/www';
 
 type ApiEnvironment = {
 	api: { rate: { requests: number } };
-} & DefaultEnvironment;
+	app: { root_path: string; timezone: string };
+} & ApiDefaultEnvironment;
 
 type ApiReply = FastifyReply<RouteGenericInterface, ApiServer>;
 

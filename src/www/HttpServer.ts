@@ -1,16 +1,17 @@
-import { LoggerService } from '@piggly/ddd-toolkit';
+import { ServiceProvider, LoggerService } from '@piggly/ddd-toolkit';
 
-import {
+import type {
+	ApiDefaultEnvironment,
 	HttpServerInterface,
 	ApiServerInterface,
-	DefaultEnvironment,
 } from '@/types/index.js';
+import type { CleanUpService } from '@/services/index.js';
 
 /**
  * @file The HTTP server.
  * @copyright Piggly Lab 2023
  */
-export class HttpServer<AppEnvironment extends DefaultEnvironment>
+export class HttpServer<AppEnvironment extends ApiDefaultEnvironment>
 	implements HttpServerInterface<any, AppEnvironment>
 {
 	/**
@@ -92,6 +93,7 @@ export class HttpServer<AppEnvironment extends DefaultEnvironment>
 
 	/**
 	 * Start the server.
+	 * It will auto add current server to cleanup service if it is registered.
 	 *
 	 * @returns {Promise<boolean>}
 	 * @public
@@ -102,6 +104,19 @@ export class HttpServer<AppEnvironment extends DefaultEnvironment>
 	 */
 	public async start(): Promise<boolean> {
 		this._running = await this.listen();
+
+		if (this._running) {
+			const service = ServiceProvider.get<CleanUpService>('CleanUpService');
+
+			if (service) {
+				const { name } = this._api.getEnv().api.rest;
+
+				service.register(`fastify:server:${name}`, async () => {
+					return await this.stop();
+				});
+			}
+		}
+
 		return this._running;
 	}
 

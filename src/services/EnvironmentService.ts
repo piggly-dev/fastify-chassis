@@ -1,13 +1,13 @@
 import { ServiceProvider } from '@piggly/ddd-toolkit';
 
-import type { DefaultEnvironment } from '@/types/index.js';
+import type { ApiDefaultEnvironment } from '@/types/index.js';
 
 /**
  * @file The environment settings service.
  * @since 5.0.0
  */
 export class EnvironmentService<
-	Settings extends DefaultEnvironment = DefaultEnvironment,
+	Settings extends ApiDefaultEnvironment = ApiDefaultEnvironment,
 > {
 	/**
 	 * The settings.
@@ -75,7 +75,7 @@ export class EnvironmentService<
 	 * @author Caique Araujo <caique@piggly.com.br>
 	 */
 	public static resolve<
-		Settings extends DefaultEnvironment = DefaultEnvironment,
+		Settings extends ApiDefaultEnvironment = ApiDefaultEnvironment,
 	>(): EnvironmentService<Settings> {
 		return ServiceProvider.resolve('EnvironmentService');
 	}

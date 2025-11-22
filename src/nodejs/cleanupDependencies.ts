@@ -1,15 +1,14 @@
-import type { RawServerBase } from 'fastify';
-
 import { ServiceProvider, LoggerService } from '@piggly/ddd-toolkit';
 import EventBus from '@piggly/event-bus';
 import debug from 'debug';
 
-import type { HttpServerInterface, DefaultEnvironment } from '@/types/index.js';
 import type { CleanUpService } from '@/services/index.js';
 
 /**
  * Cleanup dependencies.
  * It will run the CleanUpService to clean all registered dependencies.
+ *
+ * HTTP Server will be automatically cleaned up if it is registered in the CleanUpService.
  *
  * It will wait for:
  * - EventBus cleanup;
@@ -17,36 +16,27 @@ import type { CleanUpService } from '@/services/index.js';
  *
  * You may not need to cleanup classes above when using this.
  *
- * @param {HttpServerInterface<Server, AppEnvironment> | undefined} server
  * @returns {Promise<number>}
- * @since 5.5.0
+ * @since 7.3.0
  * @author Caique Araujo <caique@piggly.com.br>
  */
-export const cleanupDependencies =
-	<Server extends RawServerBase, AppEnvironment extends DefaultEnvironment>(
-		server?: HttpServerInterface<Server, AppEnvironment>,
-	): (() => Promise<number>) =>
-	async (): Promise<number> => {
-		try {
-			if (server) {
-				await server.stop();
-			}
+export const cleanupDependencies = async (): Promise<number> => {
+	try {
+		const service = ServiceProvider.get<CleanUpService>('CleanUpService');
 
-			const service = ServiceProvider.get<CleanUpService>('CleanUpService');
-
-			if (service) {
-				const response = await service.softClean();
-				return response.success ? 0 : 1;
-			}
-
-			// Register the EventBus cleanup.
-			await EventBus.instance.cleanup();
-			LoggerService.softResolve().flush();
-			await LoggerService.softResolve().cleanup();
-
-			return 0;
-		} catch (error) {
-			debug('app:cleanup:error')(error);
-			return 1;
+		if (service) {
+			const response = await service.softClean();
+			return response.success ? 0 : 1;
 		}
-	};
+
+		// Register the EventBus cleanup.
+		await EventBus.instance.cleanup();
+		LoggerService.softResolve().flush();
+		await LoggerService.softResolve().cleanup();
+
+		return 0;
+	} catch (error) {
+		debug('app:cleanup:error')(error);
+		return 1;
+	}
+};

@@ -9,9 +9,9 @@ import {
 import debug from 'debug';
 
 import type {
+	ApiDefaultEnvironment,
 	HttpServerInterface,
 	ApiServerInterface,
-	DefaultEnvironment,
 	ApiServerOptions,
 } from '@/types/index.js';
 
@@ -24,7 +24,7 @@ import { HttpServer } from '@/www/HttpServer.js';
  */
 export abstract class AbstractServer<
 	Server extends RawServerBase,
-	AppEnvironment extends DefaultEnvironment,
+	AppEnvironment extends ApiDefaultEnvironment,
 > implements ApiServerInterface<Server, AppEnvironment>
 {
 	/**
