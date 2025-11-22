@@ -51,8 +51,8 @@ export {
 
 export type {
 	FastifyModifierCallable,
+	ApiDefaultEnvironment,
 	HttpServerInterface,
-	DefaultEnvironment,
 	ApiServerInterface,
 	FastifyAppliable,
 	ApiServerOptions,

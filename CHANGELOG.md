@@ -146,3 +146,11 @@
 ## 7.3.0 at `2025-11-22`
 
 * [Update] Update dependencies to the latest version;
+* [Change] `DefaultEnvironment` migrated to `ApiDefaultEnvironment` and `app` settings where removed.
+
+## Breaking changes
+
+Applicable only if you use `CleanUpService`.
+
+* [Change] `HttpServer` will now auto add itself to cleanup service if it is registered. You should register `CleanUpService` on `ServiceProvider` before starting the server to enable this feature;
+* [Change] `cleanupDependencies` will not receive any parameter anymore. Instead, it will return the raw promise to cleanup dependencies. Since it also depends on the `CleanUpService`, it is expected that you have also registered it in the `ServiceProvider` before calling this function.

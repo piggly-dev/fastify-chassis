@@ -39,7 +39,7 @@ import fastifyRateLimit from '@fastify/rate-limit';
 import {
   BaseController
   ApiServerOptions,
-  DefaultEnvironment,
+  ApiDefaultEnvironment,
   FastifyModifierCallable,
   FastifyModifiers,
   HttpInsecureServer
@@ -51,7 +51,7 @@ import {
 
 // Defining global types
 type MyCurrentServer = Server;
-type MyCurrentEnvironment = DefaultEnvironment;
+type MyCurrentEnvironment = ApiDefaultEnvironment;
 type Request = FastifyRequest<RouteGenericInterface, MyCurrentServer>;
 type Reply = FastifyReply<MyCurrentServer>;
 

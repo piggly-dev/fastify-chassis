@@ -2,7 +2,7 @@
 import { LoggerService } from '@piggly/ddd-toolkit';
 import EventBus from '@piggly/event-bus';
 
-import type { DefaultEnvironment } from '@/types/index.js';
+import type { ApiDefaultEnvironment } from '@/types/index.js';
 
 /**
  * Process uncaught error.
@@ -21,7 +21,7 @@ import type { DefaultEnvironment } from '@/types/index.js';
  * @author Caique Araujo <caique@piggly.com.br>
  */
 export const processUncaught =
-	<Environment extends DefaultEnvironment>(
+	<Environment extends ApiDefaultEnvironment>(
 		env: Environment,
 		beforeExit?: () => Promise<number>,
 		exitCode: number = 0,
