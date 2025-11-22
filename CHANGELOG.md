@@ -142,3 +142,7 @@
 
 * [Update] Using the alpha version of `@piggly/ddd-toolkit`;
 * [Uninstall] Removed `crc` dependency.
+
+## 7.3.0 at `2025-11-22`
+
+* [Update] Update dependencies to the latest version;
