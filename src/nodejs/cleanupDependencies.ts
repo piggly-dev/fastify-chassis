@@ -22,17 +22,16 @@ import type { CleanUpService } from '@/services/index.js';
  */
 export const cleanupDependencies = async (): Promise<number> => {
 	try {
+		await EventBus.instance.cleanup();
+		LoggerService.softResolve().flush();
+		await LoggerService.softResolve().cleanup();
+
 		const service = ServiceProvider.get<CleanUpService>('CleanUpService');
 
 		if (service) {
 			const response = await service.softClean();
 			return response.success ? 0 : 1;
 		}
-
-		// Register the EventBus cleanup.
-		await EventBus.instance.cleanup();
-		LoggerService.softResolve().flush();
-		await LoggerService.softResolve().cleanup();
 
 		return 0;
 	} catch (error) {
