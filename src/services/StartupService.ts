@@ -123,6 +123,29 @@ export class StartupService {
 	}
 
 	/**
+	 * Start all handlers.
+	 * Throws an error if any handler fails.
+	 *
+	 * @returns {Promise<void>}
+	 * @public
+	 * @memberof StartupService
+	 * @since 7.4.0
+	 * @throws {Error} If any handler fails.
+	 * @author Caique Araujo <caique@piggly.com.br>
+	 */
+	public async startOrThrow(): Promise<void> {
+		for (const [name, handler] of this.handlers) {
+			debug('app:startup:handler')(`starting ${name}...`);
+
+			const success = await handler();
+
+			if (!success) {
+				throw new Error(`Cannot startup, "${name}" failed to start`);
+			}
+		}
+	}
+
+	/**
 	 * Register application service.
 	 *
 	 * @param {StartupService} service
