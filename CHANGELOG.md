@@ -158,3 +158,7 @@ Applicable only if you use `CleanUpService`.
 ## 7.4.0 at `2025-12-02`
 
 * [Add] `startOrThrow` method to `StartupService` to throw an error if any handler fails.
+
+## 7.4.1 at `2025-12-02`
+
+* [Change] `cleanupDependencies`, `processUncaught` and `processStop`.
