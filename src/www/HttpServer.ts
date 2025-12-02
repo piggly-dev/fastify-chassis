@@ -11,9 +11,9 @@ import type { CleanUpService } from '@/services/index.js';
  * @file The HTTP server.
  * @copyright Piggly Lab 2023
  */
-export class HttpServer<AppEnvironment extends ApiDefaultEnvironment>
-	implements HttpServerInterface<any, AppEnvironment>
-{
+export class HttpServer<
+	AppEnvironment extends ApiDefaultEnvironment,
+> implements HttpServerInterface<any, AppEnvironment> {
 	/**
 	 * The API server.
 	 *

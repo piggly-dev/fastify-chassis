@@ -25,8 +25,7 @@ import { HttpServer } from '@/www/HttpServer.js';
 export abstract class AbstractServer<
 	Server extends RawServerBase,
 	AppEnvironment extends ApiDefaultEnvironment,
-> implements ApiServerInterface<Server, AppEnvironment>
-{
+> implements ApiServerInterface<Server, AppEnvironment> {
 	/**
 	 * The Fastify application.
 	 *

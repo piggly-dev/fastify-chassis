@@ -9,9 +9,10 @@ import type {
  * @file The Fastify modifier.
  * @copyright Piggly Lab 2023
  */
-export class FastifyModifiers<Server extends RawServerBase, AppEnvironment>
-	implements FastifyAppliable<Server, AppEnvironment>
-{
+export class FastifyModifiers<
+	Server extends RawServerBase,
+	AppEnvironment,
+> implements FastifyAppliable<Server, AppEnvironment> {
 	/**
 	 * The callables
 	 *
