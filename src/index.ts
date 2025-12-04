@@ -35,6 +35,7 @@ export {
 } from '@/utils/index.js';
 
 export {
+	GracefulShutdownService,
 	CookieBuilderService,
 	HealthCheckService,
 	EnvironmentService,

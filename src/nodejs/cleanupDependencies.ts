@@ -16,6 +16,7 @@ import type { CleanUpService } from '@/services/index.js';
  *
  * You may not need to cleanup classes above when using this.
  *
+ * @deprecated Use GracefulShutdownService instead. It will be removed in the next major version.
  * @returns {Promise<number>}
  * @since 7.3.0
  * @author Caique Araujo <caique@piggly.com.br>

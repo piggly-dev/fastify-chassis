@@ -11,6 +11,7 @@ import EventBus from '@piggly/event-bus';
  *
  * You may not need to cleanup classes above when using this.
  *
+ * @deprecated Use GracefulShutdownService instead. It will be removed in the next major version.
  * @param {() => Promise<number>} beforeExit
  * @param {number} exitCode Used when beforeExit is not provided. Default is 0.
  * @returns The callback function.

@@ -33,6 +33,9 @@ export class CleanUpService {
 	/**
 	 * Check all handlers.
 	 *
+	 * Handlers are executed in registration order by default, which allows
+	 * controlling shutdown dependencies (e.g., stop workers before closing DB).
+	 *
 	 * @returns {Promise<{
 	 * 	success: boolean;
 	 * 	services: Record<string, boolean>;
@@ -83,6 +86,9 @@ export class CleanUpService {
 
 	/**
 	 * Check all handlers. It will not throw any error.
+	 *
+	 * Handlers are executed in registration order by default, which allows
+	 * controlling shutdown dependencies (e.g., stop workers before closing DB).
 	 *
 	 * @returns {Promise<{
 	 * 	success: boolean;
