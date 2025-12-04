@@ -162,3 +162,7 @@ Applicable only if you use `CleanUpService`.
 ## 7.4.1 at `2025-12-02`
 
 * [Change] `cleanupDependencies`, `processUncaught` and `processStop`.
+
+## 7.5.0 at `2025-12-04`
+
+* [Add] `GracefulShutdownService` to handle graceful shutdown of the service.

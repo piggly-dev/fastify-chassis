@@ -5,6 +5,7 @@ import EventBus from '@piggly/event-bus';
 /**
  * Process stop error.
  *
+ * @deprecated Use GracefulShutdownService instead. It will be removed in the next major version.
  * @param {Object} opts The options.
  * @param {boolean} opts.debug Whether to log debug messages. Default is false.
  * @param {() => Promise<number>} beforeExit
