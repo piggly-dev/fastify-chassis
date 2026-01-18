@@ -1,4 +1,4 @@
-import { CryptoService } from '@piggly/ddd-toolkit/crypto';
+import crypto from 'node:crypto';
 
 import type { FastifyRequest, FastifyReply } from 'fastify';
 
@@ -106,8 +106,8 @@ export class CSRFTokenService {
 	 * @author Caique Araujo <caique@piggly.com.br>
 	 */
 	public asRaw(): string {
-		const token = CryptoService.generateClientSecret(32);
-		const signature = CryptoService.sign(token, this._secret);
+		const token = CSRFTokenService.generateClientSecret(32);
+		const signature = CSRFTokenService.sign(token, this._secret);
 
 		return `${token}.${signature}`;
 	}
@@ -127,7 +127,7 @@ export class CSRFTokenService {
 		}
 
 		const [_token = '', _signature = ''] = String(token).split('.');
-		return CryptoService.verify(_token, _signature, this._secret);
+		return CSRFTokenService.verify(_token, _signature, this._secret);
 	}
 
 	/**
@@ -164,5 +164,74 @@ export class CSRFTokenService {
 	): boolean {
 		const token = getHeaderValue(request, header);
 		return this.verify(token);
+	}
+
+	/**
+	 * Random generates a client secret.
+	 *
+	 * @param {number} [size=36]
+	 * @public
+	 * @static
+	 * @memberof CSRFTokenService
+	 * @since 7.6.0
+	 * @author Caique Araujo <caique@piggly.com.br>
+	 */
+	protected static generateClientSecret(size: number = 36): string {
+		const buffer = crypto.randomBytes(size);
+
+		return buffer
+			.toString('base64')
+			.replace(/\//g, '_')
+			.replace(/\+/g, '-')
+			.replace(/=/g, '');
+	}
+
+	/**
+	 * Sign a string with a specific key HMAC sha256.
+	 *
+	 * @param {string} data
+	 * @param {string} key
+	 * @public
+	 * @static
+	 * @memberof CSRFTokenService
+	 * @since 7.6.0
+	 * @author Caique Araujo <caique@piggly.com.br>
+	 */
+	protected static sign(data: string, key: string): string {
+		return crypto.createHmac('sha256', key).update(data).digest('hex');
+	}
+
+	/**
+	 * Verify a string with a specific key HMAC sha256.
+	 *
+	 * @param {string} data
+	 * @param {string} key
+	 * @param {string} signature
+	 * @public
+	 * @static
+	 * @memberof CSRFTokenService
+	 * @since 7.6.0
+	 * @author Caique Araujo <caique@piggly.com.br>
+	 */
+	protected static verify(
+		data: string,
+		signature: string,
+		key: string,
+		onError?: (err: any) => void,
+	): boolean {
+		try {
+			const generatedSignature = CSRFTokenService.sign(data, key);
+
+			return crypto.timingSafeEqual(
+				Buffer.from(generatedSignature, 'hex'),
+				Buffer.from(signature, 'hex'),
+			);
+		} catch (err) {
+			if (onError) {
+				onError(err);
+			}
+
+			return false;
+		}
 	}
 }

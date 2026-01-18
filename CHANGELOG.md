@@ -170,4 +170,5 @@ Applicable only if you use `CleanUpService`.
 ## 7.6.0 at `2026-01-18`
 
 - [Update] Updated all dependencies;
-- [Fix] Cleanup does not need to know the stop status for fastify server.
+- [Fix] Cleanup does not need to know the stop status for fastify server (internal only);
+- [Remove] Dependency on CryptoService (internal only).
