@@ -1,3 +1,5 @@
+export { mountURL } from '@/utils/global.js';
+
 export {
 	getHeaderValues,
 	evaluateHeaders,
@@ -12,5 +14,3 @@ export {
 	getBody,
 	getIp,
 } from '@/utils/request.js';
-
-export { mountURL } from '@/utils/global.js';

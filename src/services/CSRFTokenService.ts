@@ -1,6 +1,6 @@
-import type { FastifyRequest, FastifyReply } from 'fastify';
-
 import { CryptoService } from '@piggly/ddd-toolkit/crypto';
+
+import type { FastifyRequest, FastifyReply } from 'fastify';
 
 import type {
 	CookieBuilderService,

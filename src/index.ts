@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-deprecated */
 export {
 	MissingAuthorizationHeaderError,
 	InvalidAuthorizationHeaderError,
@@ -19,20 +20,39 @@ export {
 } from '@/errors/index.js';
 
 export {
-	getHeaderValues,
-	evaluateHeaders,
-	getBearerToken,
-	getHeaderValue,
-	getBasicToken,
-	replyError,
-	getQueries,
-	getOrigin,
-	mountURL,
-	getParam,
-	getQuery,
-	getBody,
-	getIp,
-} from '@/utils/index.js';
+	UnauthorizedAccessEvent,
+	ApplicationErrorEvent,
+	DependencyErrorEvent,
+} from '@/events/index.js';
+
+export type {
+	UnauthorizedAccessEventPayload,
+	ApplicationErrorEventPayload,
+	DependencyErrorEventPayload,
+	EventOptions,
+} from '@/events/index.js';
+
+export { LogResponseHook } from '@/hooks/index.js';
+
+export {
+	SchemaValidationMiddleware,
+	NonceTokenMiddleware,
+	BasicAuthMiddleware,
+	CSRFTokenMiddleware,
+} from '@/middlewares/index.js';
+
+export {
+	cleanupDependencies,
+	processUncaught,
+	processStop,
+} from '@/nodejs/index.js';
+
+export {
+	CSRFHeaderIssuerRoute,
+	CSRFCookieIssuerRoute,
+	NonceBodyIssuerRoute,
+	HealthCheckRoute,
+} from '@/routes/index.js';
 
 export {
 	GracefulShutdownService,
@@ -61,6 +81,22 @@ export type {
 } from '@/types/index.js';
 
 export {
+	getHeaderValues,
+	evaluateHeaders,
+	getBearerToken,
+	getHeaderValue,
+	getBasicToken,
+	replyError,
+	getQueries,
+	getOrigin,
+	mountURL,
+	getParam,
+	getQuery,
+	getBody,
+	getIp,
+} from '@/utils/index.js';
+
+export {
 	Http2InsecureServer,
 	HttpInsecureServer,
 	Http2SecureServer,
@@ -69,38 +105,3 @@ export {
 	AbstractServer,
 	HttpServer,
 } from '@/www/index.js';
-
-export {
-	UnauthorizedAccessEvent,
-	ApplicationErrorEvent,
-	DependencyErrorEvent,
-} from '@/events/index.js';
-
-export type {
-	UnauthorizedAccessEventPayload,
-	ApplicationErrorEventPayload,
-	DependencyErrorEventPayload,
-	EventOptions,
-} from '@/events/index.js';
-
-export {
-	SchemaValidationMiddleware,
-	NonceTokenMiddleware,
-	BasicAuthMiddleware,
-	CSRFTokenMiddleware,
-} from '@/middlewares/index.js';
-
-export {
-	CSRFHeaderIssuerRoute,
-	CSRFCookieIssuerRoute,
-	NonceBodyIssuerRoute,
-	HealthCheckRoute,
-} from '@/routes/index.js';
-
-export {
-	cleanupDependencies,
-	processUncaught,
-	processStop,
-} from '@/nodejs/index.js';
-
-export { LogResponseHook } from '@/hooks/index.js';

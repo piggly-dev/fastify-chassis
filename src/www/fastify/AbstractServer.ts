@@ -1,5 +1,3 @@
-import type { FastifyInstance, RawServerBase, FastifyError } from 'fastify';
-
 import {
 	DomainErrorHiddenProp,
 	LoggerService,
@@ -7,6 +5,8 @@ import {
 	DomainError,
 } from '@piggly/ddd-toolkit';
 import debug from 'debug';
+
+import type { FastifyInstance, RawServerBase, FastifyError } from 'fastify';
 
 import type {
 	ApiDefaultEnvironment,

@@ -15,11 +15,10 @@
 		"sourceMap": true,
 		"allowJs": false,
 		"resolveJsonModule": true,
-		"baseUrl": ".",
 		"rootDir": "./src",
 		"outDir": "./dist/cjs",
 		"paths": {
-			"@/*": ["src/*"]
+			"@/*": ["./src/*"]
 		},
 		"plugins": [
 			{

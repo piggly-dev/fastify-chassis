@@ -112,7 +112,8 @@ export class HttpServer<
 				const { name } = this._api.getEnv().api.rest;
 
 				service.register(`fastify:server:${name}`, async () => {
-					return await this.stop();
+					await this.stop();
+					return true;
 				});
 			}
 		}
