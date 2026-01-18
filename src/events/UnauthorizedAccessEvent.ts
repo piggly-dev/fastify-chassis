@@ -1,7 +1,7 @@
-import type { FastifyRequest } from 'fastify';
-
 import { EventPayload, EventBus } from '@piggly/event-bus';
 import { LoggerService } from '@piggly/ddd-toolkit';
+
+import type { FastifyRequest } from 'fastify';
 
 import type {
 	UnauthorizedAccessEventPayload,

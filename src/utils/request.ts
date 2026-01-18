@@ -1,4 +1,3 @@
-import type { FastifyRequest, FastifyReply } from 'fastify';
 import type { IncomingHttpHeaders } from 'http';
 
 import {
@@ -8,6 +7,8 @@ import {
 	DomainError,
 	Result,
 } from '@piggly/ddd-toolkit';
+
+import type { FastifyRequest, FastifyReply } from 'fastify';
 
 /**
  * Return a response with error.

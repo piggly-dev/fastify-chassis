@@ -1,7 +1,7 @@
-import type { FastifyInstance, RawServerBase } from 'fastify';
-
 import { LoggerService } from '@piggly/ddd-toolkit';
 import debug from 'debug';
+
+import type { FastifyInstance, RawServerBase } from 'fastify';
 
 /**
  * Log the response of the request.
@@ -31,10 +31,10 @@ export const LogResponseHook = <
 
 	app.addHook('onRequest', async request => {
 		const data = {
-			id: request.id,
 			body: request.body ?? {},
 			headers: request.headers ?? {},
 			hostname: request.hostname,
+			id: request.id,
 			method: request.method,
 			params: request.params ?? {},
 			query: request.query ?? {},
@@ -42,9 +42,9 @@ export const LogResponseHook = <
 		};
 
 		debug('http:server')(`➡️ [${data.method}] "${data.url}"`, {
-			id: data.id,
 			body: data.body,
 			headers: data.headers,
+			id: data.id,
 			params: data.params,
 			query: data.query,
 		});
@@ -54,21 +54,21 @@ export const LogResponseHook = <
 
 	app.addHook('onSend', async (request, reply, payload) => {
 		const data = {
-			id: request.id,
 			body: payload ?? {},
 			duration: reply.elapsedTime,
 			headers: reply.getHeaders(),
 			hostname: request.hostname,
+			id: request.id,
 			method: request.method,
 			status: reply.statusCode,
 			url: request.url,
 		};
 
 		debug('http:server')(`⬅️ [${data.method}/${data.status}] "${data.url}"`, {
-			id: data.id,
 			body: data.body,
 			duration: data.duration,
 			headers: data.headers,
+			id: data.id,
 		});
 
 		LoggerService.softResolve().debug('HTTP_RESPONSE', data);

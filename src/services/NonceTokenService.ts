@@ -1,9 +1,10 @@
+import crypto from 'node:crypto';
+
 import {
 	ServiceProvider,
 	IStoreService,
 	TOrUndefined,
 } from '@piggly/ddd-toolkit';
-import { CryptoService } from '@piggly/ddd-toolkit/crypto';
 
 /**
  * @file Nonce service.
@@ -53,7 +54,7 @@ export class NonceTokenService {
 		const nonces: Array<string> = [];
 
 		for (let i = 0; i < size; i++) {
-			const nonce = CryptoService.generateClientSecret(32);
+			const nonce = NonceTokenService.generateClientSecret(32);
 			const response = await this._repository.set(
 				`nonce:${nonce}`,
 				'1',
@@ -103,6 +104,26 @@ export class NonceTokenService {
 
 		const nonces = await this.issue(1, ttl);
 		return nonces[0];
+	}
+
+	/**
+	 * Random generates a client secret.
+	 *
+	 * @param {number} [size=36]
+	 * @public
+	 * @static
+	 * @memberof NonceTokenService
+	 * @since 7.6.0
+	 * @author Caique Araujo <caique@piggly.com.br>
+	 */
+	protected static generateClientSecret(size: number = 36): string {
+		const buffer = crypto.randomBytes(size);
+
+		return buffer
+			.toString('base64')
+			.replace(/\//g, '_')
+			.replace(/\+/g, '-')
+			.replace(/=/g, '');
 	}
 
 	/**

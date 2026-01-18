@@ -1,11 +1,11 @@
+import { evaluateSchema, DomainError, Result } from '@piggly/ddd-toolkit';
+import { z } from 'zod';
+
 import type {
 	HookHandlerDoneFunction,
 	FastifyRequest,
 	FastifyReply,
 } from 'fastify';
-
-import { evaluateSchema, DomainError, Result } from '@piggly/ddd-toolkit';
-import { z } from 'zod';
 
 import { replyError, getBody } from '@/utils/index.js';
 

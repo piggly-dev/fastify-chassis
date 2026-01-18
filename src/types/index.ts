@@ -90,10 +90,10 @@ export interface HttpServerInterface<
 	AppEnvironment extends ApiDefaultEnvironment,
 > {
 	getApi: () => ApiServerInterface<Server, AppEnvironment>;
+	isRunning(): boolean;
 	restart(): Promise<boolean>;
 	start(): Promise<boolean>;
 	stop(): Promise<boolean>;
-	isRunning(): boolean;
 }
 
 declare module 'fastify' {
